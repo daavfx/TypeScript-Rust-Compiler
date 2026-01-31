@@ -1,9 +1,13 @@
 /*
 !.gitignore
+!LICENSE
 !/tsc-rust/
 !/tsc-rust/**
 /tsc-rust/target/
 /tsc-rust/--output/
+!/ryiukc/
+!/ryiukc/**
+/ryiukc/target/
 !/compiled_output/
 /compiled_output/*
 !/compiled_output/reports/
