@@ -1,0 +1,38 @@
+{
+  "timestamp_utc": "2026-01-31T16:21:01.122517Z",
+  "root": "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 500,
+  "total_discovered": 501,
+  "attempted": 500,
+  "compiled": 498,
+  "failed": 2,
+  "success_rate": 99.6,
+  "failures_by_signature": {
+    "Error at 214:17: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\cli.ts"
+      ]
+    },
+    "Error at 72:11: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\core-bridge.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error at 214:17: Unexpected token: RParen",
+      1
+    ],
+    [
+      "Error at 72:11: Unexpected token: RParen",
+      1
+    ]
+  ]
+}

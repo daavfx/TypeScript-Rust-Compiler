@@ -217,6 +217,7 @@ pub enum PropertyKey {
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum BinaryOp {
+    Comma,
     Add,
     Sub,
     Mul,
@@ -226,6 +227,9 @@ pub enum BinaryOp {
     BitAnd,
     BitOr,
     BitXor,
+    Shl,
+    Shr,
+    UShr,
     Eq,
     NotEq,
     StrictEq,
@@ -246,6 +250,10 @@ pub enum UnaryOp {
     Neg,
     Not,
     Void,
+    Delete,
+    BitNot,
+    PreInc,
+    PreDec,
     PostInc,
     PostDec,
 }
@@ -592,9 +600,13 @@ impl fmt::Display for BinaryOp {
             BinaryOp::Div => "/",
             BinaryOp::Mod => "%",
             BinaryOp::Pow => "**",
+            BinaryOp::Comma => ",",
             BinaryOp::BitAnd => "&",
             BinaryOp::BitOr => "|",
             BinaryOp::BitXor => "^",
+            BinaryOp::Shl => "<<",
+            BinaryOp::Shr => ">>",
+            BinaryOp::UShr => ">>>",
             BinaryOp::Eq => "==",
             BinaryOp::NotEq => "!=",
             BinaryOp::StrictEq => "===",

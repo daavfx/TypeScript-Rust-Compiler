@@ -280,6 +280,14 @@ impl Parser {
                         self.advance();
                         depth -= 1;
                     }
+                    Token::GreaterThanGreaterThan => {
+                        self.advance();
+                        depth -= 2;
+                    }
+                    Token::GreaterThanGreaterThanGreaterThan => {
+                        self.advance();
+                        depth -= 3;
+                    }
                     _ => {
                         self.advance();
                     }
@@ -312,6 +320,15 @@ impl Parser {
 
         if self.check(&Token::GreaterThanAngle) || self.check(&Token::GreaterThan) {
             self.advance();
+        } else if self.check(&Token::GreaterThanGreaterThan) {
+            self.tokens[self.pos] = Token::GreaterThan;
+            self.tokens.insert(self.pos + 1, Token::GreaterThan);
+            self.advance();
+        } else if self.check(&Token::GreaterThanGreaterThanGreaterThan) {
+            self.tokens[self.pos] = Token::GreaterThan;
+            self.tokens.insert(self.pos + 1, Token::GreaterThan);
+            self.tokens.insert(self.pos + 2, Token::GreaterThan);
+            self.advance();
         } else {
             return Err(CompileError::simple("Expected '>'"));
         }
@@ -330,6 +347,10 @@ impl Parser {
 
         loop {
             let name = self.parse_pattern()?;
+
+            if self.check(&Token::Bang) {
+                self.advance();
+            }
 
             let type_ann = if self.check(&Token::Colon) {
                 self.advance();
@@ -744,6 +765,55 @@ impl Parser {
                 let _ = self.parse_primary_type()?;
                 TypeAnnotation::Any
             }
+            Token::Import => {
+                self.advance();
+                if self.check(&Token::LParen) {
+                    self.advance();
+                    if let Token::StringLiteral(_) = self.peek() {
+                        self.advance();
+                    }
+                    self.expect(&Token::RParen)?;
+                }
+                while self.check(&Token::Dot) {
+                    self.advance();
+                    match self.peek() {
+                        Token::Identifier(_) => {
+                            self.advance();
+                        }
+                        Token::From
+                        | Token::Default
+                        | Token::Type
+                        | Token::As
+                        | Token::In
+                        | Token::Of
+                        | Token::Any
+                        | Token::Unknown
+                        | Token::Never
+                        | Token::StringType
+                        | Token::NumberType
+                        | Token::BooleanType
+                        | Token::Void
+                        | Token::ObjectType
+                        | Token::Enum
+                        | Token::Catch
+                        | Token::Try
+                        | Token::Finally
+                        | Token::Throw
+                        | Token::Readonly
+                        | Token::Native
+                        | Token::Async
+                        | Token::Await => {
+                            self.advance();
+                        }
+                        _ => break,
+                    }
+                }
+                TypeAnnotation::Any
+            }
+            Token::Readonly => {
+                self.advance();
+                self.parse_primary_type()?
+            }
             Token::Void => {
                 self.advance();
                 TypeAnnotation::Void
@@ -795,6 +865,9 @@ impl Parser {
 
                 if !self.check(&Token::RParen) {
                     loop {
+                        if self.check(&Token::RParen) {
+                            break;
+                        }
                         if self.check(&Token::DotDotDot) {
                             self.advance();
                         }
@@ -880,6 +953,13 @@ impl Parser {
             Token::Identifier(name) => {
                 let mut name = name.clone();
                 self.advance();
+                if name == "infer" {
+                    if let Token::Identifier(n) = self.peek() {
+                        let n = n.clone();
+                        self.advance();
+                        return Ok(TypeAnnotation::TypeReference(n, vec![]));
+                    }
+                }
                 while self.check(&Token::Dot) {
                     self.advance();
                     let next = match self.peek() {
@@ -1472,6 +1552,36 @@ impl Parser {
         let mut members = Vec::new();
 
         while !self.check(&Token::RBrace) {
+            let mut readonly = false;
+            if self.check(&Token::Readonly) {
+                self.advance();
+                readonly = true;
+            }
+
+            if self.check(&Token::LBracket) {
+                self.advance();
+                let key_name = match self.advance() {
+                    Token::Identifier(n) => n,
+                    _ => return Err(CompileError::simple("Expected index signature key name")),
+                };
+                self.expect(&Token::Colon)?;
+                let key_type = self.parse_type()?;
+                self.expect(&Token::RBracket)?;
+                self.expect(&Token::Colon)?;
+                let value_type = self.parse_type()?;
+
+                if self.check(&Token::Semicolon) || self.check(&Token::Comma) {
+                    self.advance();
+                }
+
+                members.push(InterfaceMember::IndexSignature {
+                    key_name,
+                    key_type,
+                    value_type,
+                });
+                continue;
+            }
+
             let prop_name = match self.advance() {
                 Token::Identifier(n) => n,
                 Token::From => "from".to_string(),
@@ -1483,7 +1593,6 @@ impl Parser {
                 Token::Any => "any".to_string(),
                 Token::Unknown => "unknown".to_string(),
                 Token::Never => "never".to_string(),
-                Token::Readonly => "readonly".to_string(),
                 Token::Native => "native".to_string(),
                 Token::Finally => "finally".to_string(),
                 Token::Try => "try".to_string(),
@@ -1492,17 +1601,6 @@ impl Parser {
                 Token::Async => "async".to_string(),
                 Token::Await => "await".to_string(),
                 Token::StringLiteral(s) => s,
-                Token::LBracket => {
-                    let mut depth = 1usize;
-                    while depth > 0 && !self.is_at_end() {
-                        match self.advance() {
-                            Token::LBracket => depth += 1,
-                            Token::RBracket => depth -= 1,
-                            _ => {}
-                        }
-                    }
-                    "[]".to_string()
-                }
                 t => {
                     return Err(CompileError::simple(&format!(
                         "Expected property name, got {:?}",
@@ -1558,7 +1656,7 @@ impl Parser {
                     name: prop_name,
                     type_ann,
                     optional,
-                    readonly: false,
+                    readonly,
                 });
             }
         }
@@ -1767,6 +1865,15 @@ impl Parser {
 
         if self.check(&Token::GreaterThanAngle) || self.check(&Token::GreaterThan) {
             self.advance();
+        } else if self.check(&Token::GreaterThanGreaterThan) {
+            self.tokens[self.pos] = Token::GreaterThan;
+            self.tokens.insert(self.pos + 1, Token::GreaterThan);
+            self.advance();
+        } else if self.check(&Token::GreaterThanGreaterThanGreaterThan) {
+            self.tokens[self.pos] = Token::GreaterThan;
+            self.tokens.insert(self.pos + 1, Token::GreaterThan);
+            self.tokens.insert(self.pos + 2, Token::GreaterThan);
+            self.advance();
         } else {
             return Err(CompileError::simple("Expected '>'"));
         }
@@ -1881,7 +1988,6 @@ impl Parser {
         // Regular for loop
 
         let init = if self.check(&Token::Semicolon) {
-            self.advance();
             None
         } else if self.check(&Token::Let) || self.check(&Token::Const) || self.check(&Token::Var) {
             Some(Box::new(self.parse_for_variable_decl()?))
@@ -1903,8 +2009,6 @@ impl Parser {
                     None
                 };
 
-                self.expect(&Token::Semicolon)?;
-
                 Some(Box::new(Stmt::VariableDecl {
                     kind: VarKind::Let,
                     declarations: vec![VariableDeclarator {
@@ -1915,17 +2019,14 @@ impl Parser {
                 }))
             } else {
                 let expr = self.parse_expression()?;
-                self.expect(&Token::Semicolon)?;
                 Some(Box::new(Stmt::ExprStmt(expr)))
             }
         };
 
-        // parse_for_variable_decl doesn't consume the semicolon
-        // We need to consume it here
+        // First ';' separator
         self.expect(&Token::Semicolon)?;
 
         let condition = if self.check(&Token::Semicolon) {
-            self.advance();
             None
         } else {
             Some(self.parse_expression()?)
@@ -1936,7 +2037,7 @@ impl Parser {
         let update = if self.check(&Token::RParen) {
             None
         } else {
-            Some(self.parse_expression()?)
+            Some(self.parse_comma_sequence()?)
         };
         self.expect(&Token::RParen)?;
 
@@ -2341,6 +2442,20 @@ impl Parser {
         self.parse_assignment()
     }
 
+    fn parse_comma_sequence(&mut self) -> Result<Expr, CompileError> {
+        let mut expr = self.parse_assignment()?;
+        while self.check(&Token::Comma) {
+            self.advance();
+            let right = self.parse_assignment()?;
+            expr = Expr::Binary {
+                left: Box::new(expr),
+                op: BinaryOp::Comma,
+                right: Box::new(right),
+            };
+        }
+        Ok(expr)
+    }
+
     fn parse_assignment(&mut self) -> Result<Expr, CompileError> {
         let expr = self.parse_ternary()?;
 
@@ -2437,6 +2552,63 @@ impl Parser {
             let value = Expr::Binary {
                 left: Box::new(expr.clone()),
                 op: BinaryOp::BitXor,
+                right: Box::new(rhs),
+            };
+            return Ok(Expr::Assignment {
+                target: Box::new(expr),
+                op: AssignOp::Assign,
+                value: Box::new(value),
+            });
+        }
+
+        if self.check(&Token::LessThanLessThan)
+            && self.pos + 1 < self.tokens.len()
+            && matches!(self.tokens[self.pos + 1], Token::Equals)
+        {
+            self.advance();
+            self.advance();
+            let rhs = self.parse_assignment()?;
+            let value = Expr::Binary {
+                left: Box::new(expr.clone()),
+                op: BinaryOp::Shl,
+                right: Box::new(rhs),
+            };
+            return Ok(Expr::Assignment {
+                target: Box::new(expr),
+                op: AssignOp::Assign,
+                value: Box::new(value),
+            });
+        }
+
+        if self.check(&Token::GreaterThanGreaterThan)
+            && self.pos + 1 < self.tokens.len()
+            && matches!(self.tokens[self.pos + 1], Token::Equals)
+        {
+            self.advance();
+            self.advance();
+            let rhs = self.parse_assignment()?;
+            let value = Expr::Binary {
+                left: Box::new(expr.clone()),
+                op: BinaryOp::Shr,
+                right: Box::new(rhs),
+            };
+            return Ok(Expr::Assignment {
+                target: Box::new(expr),
+                op: AssignOp::Assign,
+                value: Box::new(value),
+            });
+        }
+
+        if self.check(&Token::GreaterThanGreaterThanGreaterThan)
+            && self.pos + 1 < self.tokens.len()
+            && matches!(self.tokens[self.pos + 1], Token::Equals)
+        {
+            self.advance();
+            self.advance();
+            let rhs = self.parse_assignment()?;
+            let value = Expr::Binary {
+                left: Box::new(expr.clone()),
+                op: BinaryOp::UShr,
                 right: Box::new(rhs),
             };
             return Ok(Expr::Assignment {
@@ -2627,8 +2799,31 @@ impl Parser {
         Ok(left)
     }
 
-    fn parse_comparison(&mut self) -> Result<Expr, CompileError> {
+    fn parse_shift(&mut self) -> Result<Expr, CompileError> {
         let mut left = self.parse_additive()?;
+        loop {
+            let op = match self.peek() {
+                Token::LessThanLessThan => BinaryOp::Shl,
+                Token::GreaterThanGreaterThan => BinaryOp::Shr,
+                Token::GreaterThanGreaterThanGreaterThan => BinaryOp::UShr,
+                _ => break,
+            };
+            if self.pos + 1 < self.tokens.len() && matches!(self.tokens[self.pos + 1], Token::Equals) {
+                break;
+            }
+            self.advance();
+            let right = self.parse_additive()?;
+            left = Expr::Binary {
+                left: Box::new(left),
+                op,
+                right: Box::new(right),
+            };
+        }
+        Ok(left)
+    }
+
+    fn parse_comparison(&mut self) -> Result<Expr, CompileError> {
+        let mut left = self.parse_shift()?;
 
         loop {
             let op = match self.peek() {
@@ -2642,7 +2837,7 @@ impl Parser {
             };
 
             self.advance();
-            let right = self.parse_additive()?;
+            let right = self.parse_shift()?;
             left = Expr::Binary {
                 left: Box::new(left),
                 op,
@@ -2712,6 +2907,27 @@ impl Parser {
 
     fn parse_unary(&mut self) -> Result<Expr, CompileError> {
         match self.peek() {
+            Token::PlusPlus => {
+                self.advance();
+                Ok(Expr::Unary {
+                    op: UnaryOp::PreInc,
+                    operand: Box::new(self.parse_unary()?),
+                })
+            }
+            Token::MinusMinus => {
+                self.advance();
+                Ok(Expr::Unary {
+                    op: UnaryOp::PreDec,
+                    operand: Box::new(self.parse_unary()?),
+                })
+            }
+            Token::Tilde => {
+                self.advance();
+                Ok(Expr::Unary {
+                    op: UnaryOp::BitNot,
+                    operand: Box::new(self.parse_unary()?),
+                })
+            }
             Token::Bang => {
                 self.advance();
                 Ok(Expr::Unary {
@@ -2734,6 +2950,13 @@ impl Parser {
                 self.advance();
                 Ok(Expr::Unary {
                     op: UnaryOp::Void,
+                    operand: Box::new(self.parse_unary()?),
+                })
+            }
+            Token::Identifier(name) if name == "delete" => {
+                self.advance();
+                Ok(Expr::Unary {
+                    op: UnaryOp::Delete,
                     operand: Box::new(self.parse_unary()?),
                 })
             }
@@ -2767,7 +2990,29 @@ impl Parser {
                                 break;
                             }
                         }
-                        Token::Semicolon | Token::Equals | Token::EOF => break,
+                        Token::GreaterThanGreaterThan => {
+                            depth -= 2;
+                            if depth == 0 {
+                                if i + 1 < self.tokens.len()
+                                    && matches!(self.tokens[i + 1], Token::LParen)
+                                {
+                                    is_type_args = true;
+                                }
+                                break;
+                            }
+                        }
+                        Token::GreaterThanGreaterThanGreaterThan => {
+                            depth -= 3;
+                            if depth == 0 {
+                                if i + 1 < self.tokens.len()
+                                    && matches!(self.tokens[i + 1], Token::LParen)
+                                {
+                                    is_type_args = true;
+                                }
+                                break;
+                            }
+                        }
+                        Token::EOF => break,
                         _ => {}
                     }
                     i += 1;
@@ -2796,7 +3041,27 @@ impl Parser {
                                 break;
                             }
                         }
-                        Token::Semicolon | Token::Equals | Token::EOF => break,
+                        Token::GreaterThanGreaterThan => {
+                            depth -= 2;
+                            if depth == 0 {
+                                if i + 1 < self.tokens.len() && matches!(self.tokens[i + 1], Token::LParen)
+                                {
+                                    is_type_args = true;
+                                }
+                                break;
+                            }
+                        }
+                        Token::GreaterThanGreaterThanGreaterThan => {
+                            depth -= 3;
+                            if depth == 0 {
+                                if i + 1 < self.tokens.len() && matches!(self.tokens[i + 1], Token::LParen)
+                                {
+                                    is_type_args = true;
+                                }
+                                break;
+                            }
+                        }
+                        Token::EOF => break,
                         _ => {}
                     }
                     i += 1;
@@ -3158,6 +3423,34 @@ impl Parser {
                 self.advance();
                 Ok(Expr::Identifier("type".to_string()))
             }
+            Token::Any => {
+                self.advance();
+                Ok(Expr::Identifier("any".to_string()))
+            }
+            Token::Unknown => {
+                self.advance();
+                Ok(Expr::Identifier("unknown".to_string()))
+            }
+            Token::Never => {
+                self.advance();
+                Ok(Expr::Identifier("never".to_string()))
+            }
+            Token::StringType => {
+                self.advance();
+                Ok(Expr::Identifier("string".to_string()))
+            }
+            Token::NumberType => {
+                self.advance();
+                Ok(Expr::Identifier("number".to_string()))
+            }
+            Token::BooleanType => {
+                self.advance();
+                Ok(Expr::Identifier("boolean".to_string()))
+            }
+            Token::ObjectType => {
+                self.advance();
+                Ok(Expr::Identifier("object".to_string()))
+            }
             Token::Identifier(name) => {
                 let name = name.clone();
                 self.advance();
@@ -3425,6 +3718,9 @@ impl Parser {
             }
             Token::Function => {
                 self.advance();
+                if self.check(&Token::Star) {
+                    self.advance();
+                }
                 let name = if let Token::Identifier(n) = self.peek() {
                     let n = n.clone();
                     self.advance();
@@ -3476,38 +3772,85 @@ impl Parser {
     }
 
     fn is_arrow_function_params(&self) -> bool {
-        // Simple heuristic - look for ) => or ): type =>
-        let mut depth = 1;
+        let mut paren_depth = 1isize;
         let mut i = self.pos;
-        while i < self.tokens.len() && depth > 0 {
+        while i < self.tokens.len() && paren_depth > 0 {
             match &self.tokens[i] {
-                Token::LParen => depth += 1,
-                Token::RParen => depth -= 1,
+                Token::LParen => paren_depth += 1,
+                Token::RParen => paren_depth -= 1,
+                Token::EOF => return false,
                 _ => {}
             }
             i += 1;
         }
-        // After ), we might have : type before =>
-        // Skip past optional return type annotation
-        while i < self.tokens.len() {
-            match &self.tokens[i] {
-                Token::Arrow => return true,
-                Token::Colon => {
-                    // Skip the type annotation
-                    i += 1;
-                    // Skip type tokens until we hit => or something else
-                    while i < self.tokens.len() {
-                        match &self.tokens[i] {
-                            Token::Arrow => return true,
-                            Token::Semicolon | Token::LBrace | Token::EOF => return false,
-                            _ => i += 1,
-                        }
-                    }
-                }
-                Token::Semicolon | Token::LBrace | Token::EOF => return false,
-                _ => return false,
-            }
+
+        if i >= self.tokens.len() {
+            return false;
         }
+
+        match &self.tokens[i] {
+            Token::Arrow => return true,
+            Token::Colon => {}
+            _ => return false,
+        }
+
+        let scan_limit = (i + 64).min(self.tokens.len());
+        let mut j = i + 1;
+        let mut depth_paren = 0isize;
+        let mut depth_brace = 0isize;
+        let mut depth_bracket = 0isize;
+        let mut depth_angle = 0isize;
+
+        while j < scan_limit {
+            match &self.tokens[j] {
+                Token::Arrow
+                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 =>
+                {
+                    return true;
+                }
+
+                Token::LParen => depth_paren += 1,
+                Token::RParen => {
+                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 {
+                        return false;
+                    }
+                    depth_paren -= 1;
+                }
+                Token::LBrace => depth_brace += 1,
+                Token::RBrace => {
+                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 {
+                        return false;
+                    }
+                    depth_brace -= 1;
+                }
+                Token::LBracket => depth_bracket += 1,
+                Token::RBracket => {
+                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 {
+                        return false;
+                    }
+                    depth_bracket -= 1;
+                }
+                Token::LessThan | Token::LessThanAngle => depth_angle += 1,
+                Token::GreaterThan | Token::GreaterThanAngle => depth_angle -= 1,
+                Token::GreaterThanGreaterThan => depth_angle -= 2,
+                Token::GreaterThanGreaterThanGreaterThan => depth_angle -= 3,
+
+                Token::Semicolon | Token::Comma | Token::EOF
+                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 =>
+                {
+                    return false;
+                }
+
+                _ => {}
+            }
+
+            if depth_paren < 0 || depth_brace < 0 || depth_bracket < 0 || depth_angle < 0 {
+                return false;
+            }
+
+            j += 1;
+        }
+
         false
     }
 

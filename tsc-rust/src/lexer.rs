@@ -904,9 +904,10 @@ impl Lexer {
     }
 
     fn is_type_args_context(&self, lt_pos: usize) -> bool {
-        if lt_pos == 0 {
+        if lt_pos + 1 >= self.source.len() {
             return false;
         }
+
         let mut i = lt_pos;
         while i > 0 && self.source[i - 1].is_whitespace() {
             i -= 1;
@@ -914,7 +915,73 @@ impl Lexer {
         if i == 0 {
             return false;
         }
+
         let prev = self.source[i - 1];
-        prev.is_alphanumeric() || prev == '_' || prev == '$' || prev == ')' || prev == ']'
+        let prev_ok = prev.is_alphanumeric() || prev == '_' || prev == '$' || prev == ')' || prev == ']';
+        if !prev_ok {
+            return false;
+        }
+
+        let mut angle_depth: isize = 1;
+        let mut brace_depth: isize = 0;
+        let mut paren_depth: isize = 0;
+        let mut bracket_depth: isize = 0;
+
+        let mut quote: Option<char> = None;
+        let mut escaped = false;
+
+        let mut pos = lt_pos + 1;
+        while pos < self.source.len() {
+            let ch = self.source[pos];
+
+            if let Some(q) = quote {
+                if escaped {
+                    escaped = false;
+                } else if ch == '\\' {
+                    escaped = true;
+                } else if ch == q {
+                    quote = None;
+                }
+                pos += 1;
+                continue;
+            }
+
+            if ch == '"' || ch == '\'' || ch == '`' {
+                quote = Some(ch);
+                pos += 1;
+                continue;
+            }
+
+            match ch {
+                '{' => brace_depth += 1,
+                '}' => brace_depth -= 1,
+                '(' => paren_depth += 1,
+                ')' => paren_depth -= 1,
+                '[' => bracket_depth += 1,
+                ']' => bracket_depth -= 1,
+                '<' => angle_depth += 1,
+                '>' => {
+                    angle_depth -= 1;
+                    if angle_depth == 0 {
+                        let mut j = pos + 1;
+                        while j < self.source.len() && self.source[j].is_whitespace() {
+                            j += 1;
+                        }
+                        let next = self.source.get(j).copied().unwrap_or('\0');
+                        return matches!(next, '(' | '.' | '[' | ')' | ',' | ':' | '?' | ';' | '=' | '\0');
+                    }
+                }
+                ';' | '\n' if brace_depth <= 0 && paren_depth <= 0 && bracket_depth <= 0 => return false,
+                _ => {}
+            }
+
+            if brace_depth < 0 || paren_depth < 0 || bracket_depth < 0 {
+                return false;
+            }
+
+            pos += 1;
+        }
+
+        false
     }
 }

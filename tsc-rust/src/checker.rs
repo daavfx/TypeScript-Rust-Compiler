@@ -200,6 +200,7 @@ impl TypeChecker {
                 let right_type = self.infer_type(right)?;
 
                 match op {
+                    BinaryOp::Comma => Ok(right_type),
                     BinaryOp::Add => {
                         if matches!(left_type, TypeAnnotation::String)
                             || matches!(right_type, TypeAnnotation::String)
@@ -215,7 +216,10 @@ impl TypeChecker {
                     | BinaryOp::Mod
                     | BinaryOp::BitAnd
                     | BinaryOp::BitOr
-                    | BinaryOp::BitXor => {
+                    | BinaryOp::BitXor
+                    | BinaryOp::Shl
+                    | BinaryOp::Shr
+                    | BinaryOp::UShr => {
                         Ok(TypeAnnotation::Number)
                     }
                     BinaryOp::Pow => Ok(TypeAnnotation::Number),
@@ -246,6 +250,8 @@ impl TypeChecker {
                     UnaryOp::Not => Ok(TypeAnnotation::Boolean),
                     UnaryOp::Neg => Ok(TypeAnnotation::Number),
                     UnaryOp::Void => Ok(TypeAnnotation::Undefined),
+                    UnaryOp::Delete => Ok(TypeAnnotation::Boolean),
+                    UnaryOp::BitNot => Ok(TypeAnnotation::Number),
                     _ => Ok(operand_type),
                 }
             }
@@ -331,6 +337,9 @@ impl TypeChecker {
             (TypeAnnotation::Array(a), TypeAnnotation::Array(b)) => self.types_compatible(a, b),
             (TypeAnnotation::TypeReference(name, _), TypeAnnotation::Array(_)) if name == "Array" => true,
             (TypeAnnotation::Array(_), TypeAnnotation::TypeReference(name, _)) if name == "Array" => true,
+            (TypeAnnotation::TypeReference(_, _), TypeAnnotation::String)
+            | (TypeAnnotation::TypeReference(_, _), TypeAnnotation::Number)
+            | (TypeAnnotation::TypeReference(_, _), TypeAnnotation::Boolean) => true,
             (TypeAnnotation::Union(types), actual) => {
                 types.iter().any(|t| self.types_compatible(t, actual))
             }

@@ -1,0 +1,138 @@
+{
+  "timestamp_utc": "2026-01-31T15:53:50.081667100Z",
+  "root": "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 500,
+  "total_discovered": 501,
+  "attempted": 500,
+  "compiled": 488,
+  "failed": 12,
+  "success_rate": 97.6,
+  "failures_by_signature": {
+    "Error at 214:17: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\cli.ts"
+      ]
+    },
+    "Error at 221:16: Expected RParen, got Comma": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\tts-openai.ts"
+      ]
+    },
+    "Error at 32:57: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\media.test.ts"
+      ]
+    },
+    "Error at 367:64: Unexpected token: Amp": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\channel.ts"
+      ]
+    },
+    "Error at 46:23: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\media-stream.test.ts"
+      ]
+    },
+    "Error at 54:51: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send.test.ts"
+      ]
+    },
+    "Error at 58:36: Expected RParen, got Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\debug-claude-usage.ts"
+      ]
+    },
+    "Error at 5:20: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\state.ts"
+      ]
+    },
+    "Error at 6:56: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send\\targets.test.ts"
+      ]
+    },
+    "Error at 72:11: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\core-bridge.ts"
+      ]
+    },
+    "Error at 768:40: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager.ts"
+      ]
+    },
+    "Error at 89:8: Expected RParen, got Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error at 214:17: Unexpected token: RParen",
+      1
+    ],
+    [
+      "Error at 221:16: Expected RParen, got Comma",
+      1
+    ],
+    [
+      "Error at 32:57: Unexpected token: Dot",
+      1
+    ],
+    [
+      "Error at 367:64: Unexpected token: Amp",
+      1
+    ],
+    [
+      "Error at 46:23: Unexpected token: Colon",
+      1
+    ],
+    [
+      "Error at 54:51: Unexpected token: Dot",
+      1
+    ],
+    [
+      "Error at 58:36: Expected RParen, got Colon",
+      1
+    ],
+    [
+      "Error at 5:20: Expected type",
+      1
+    ],
+    [
+      "Error at 6:56: Unexpected token: Dot",
+      1
+    ],
+    [
+      "Error at 72:11: Unexpected token: RParen",
+      1
+    ],
+    [
+      "Error at 768:40: Expected type",
+      1
+    ],
+    [
+      "Error at 89:8: Expected RParen, got Colon",
+      1
+    ]
+  ]
+}

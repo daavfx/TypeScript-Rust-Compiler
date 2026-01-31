@@ -1,0 +1,188 @@
+{
+  "timestamp_utc": "2026-01-31T16:18:15.193968500Z",
+  "root": "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 500,
+  "total_discovered": 501,
+  "attempted": 500,
+  "compiled": 483,
+  "failed": 17,
+  "success_rate": 96.6,
+  "failures_by_signature": {
+    "Error at 1037:37: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.ts"
+      ]
+    },
+    "Error at 113:20: Expected identifier or pattern, got StringLiteral(\"chat_identifier\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\actions.ts"
+      ]
+    },
+    "Error at 113:73: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\attachments.ts"
+      ]
+    },
+    "Error at 147:41: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-runner.ts"
+      ]
+    },
+    "Error at 16:19: Expected Comma, got As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\index.ts"
+      ]
+    },
+    "Error at 178:23: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\monitor-handler\\message-handler.ts"
+      ]
+    },
+    "Error at 185:44: Expected Comma, got As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\monitor.ts"
+      ]
+    },
+    "Error at 214:17: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\cli.ts"
+      ]
+    },
+    "Error at 231:58: Expected RBracket, got Identifier(\"key\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-runner\\helpers.ts"
+      ]
+    },
+    "Error at 25:49: Expected Comma, got LParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\onboarding.ts"
+      ]
+    },
+    "Error at 328:22: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\handler.ts"
+      ]
+    },
+    "Error at 497:15: Expected Comma, got As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\monitor.ts"
+      ]
+    },
+    "Error at 567:42: Expected Comma, got QuestionDot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\channel.ts"
+      ]
+    },
+    "Error at 64:32: Expected RBracket, got Identifier(\"matchKey\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\accounts.ts"
+      ]
+    },
+    "Error at 72:11: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\core-bridge.ts"
+      ]
+    },
+    "Error at 90:29: Expected Comma, got LParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\onboarding.ts"
+      ]
+    },
+    "Error at 90:62: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\send.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error at 1037:37: Expected Comma, got Dot",
+      1
+    ],
+    [
+      "Error at 113:20: Expected identifier or pattern, got StringLiteral(\"chat_identifier\")",
+      1
+    ],
+    [
+      "Error at 113:73: Expected Comma, got Dot",
+      1
+    ],
+    [
+      "Error at 147:41: Expected Comma, got Dot",
+      1
+    ],
+    [
+      "Error at 16:19: Expected Comma, got As",
+      1
+    ],
+    [
+      "Error at 178:23: Expected Comma, got Dot",
+      1
+    ],
+    [
+      "Error at 185:44: Expected Comma, got As",
+      1
+    ],
+    [
+      "Error at 214:17: Unexpected token: RParen",
+      1
+    ],
+    [
+      "Error at 231:58: Expected RBracket, got Identifier(\"key\")",
+      1
+    ],
+    [
+      "Error at 25:49: Expected Comma, got LParen",
+      1
+    ],
+    [
+      "Error at 328:22: Expected Comma, got Dot",
+      1
+    ],
+    [
+      "Error at 497:15: Expected Comma, got As",
+      1
+    ],
+    [
+      "Error at 567:42: Expected Comma, got QuestionDot",
+      1
+    ],
+    [
+      "Error at 64:32: Expected RBracket, got Identifier(\"matchKey\")",
+      1
+    ],
+    [
+      "Error at 72:11: Unexpected token: RParen",
+      1
+    ],
+    [
+      "Error at 90:29: Expected Comma, got LParen",
+      1
+    ],
+    [
+      "Error at 90:62: Expected Comma, got Dot",
+      1
+    ]
+  ]
+}
