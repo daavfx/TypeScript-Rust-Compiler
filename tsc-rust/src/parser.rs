@@ -435,6 +435,106 @@ impl Parser {
                 self.advance();
                 Ok(Pattern::Identifier("never".to_string()))
             }
+            Token::Package => {
+                self.advance();
+                Ok(Pattern::Identifier("package".to_string()))
+            }
+            Token::Const => {
+                self.advance();
+                Ok(Pattern::Identifier("const".to_string()))
+            }
+            Token::Final => {
+                self.advance();
+                Ok(Pattern::Identifier("final".to_string()))
+            }
+            Token::Native => {
+                self.advance();
+                Ok(Pattern::Identifier("native".to_string()))
+            }
+            Token::Let => {
+                self.advance();
+                Ok(Pattern::Identifier("let".to_string()))
+            }
+            Token::Var => {
+                self.advance();
+                Ok(Pattern::Identifier("var".to_string()))
+            }
+            Token::Function => {
+                self.advance();
+                Ok(Pattern::Identifier("function".to_string()))
+            }
+            Token::Class => {
+                self.advance();
+                Ok(Pattern::Identifier("class".to_string()))
+            }
+            Token::Interface => {
+                self.advance();
+                Ok(Pattern::Identifier("interface".to_string()))
+            }
+            Token::Import => {
+                self.advance();
+                Ok(Pattern::Identifier("import".to_string()))
+            }
+            Token::Export => {
+                self.advance();
+                Ok(Pattern::Identifier("export".to_string()))
+            }
+            Token::Extends => {
+                self.advance();
+                Ok(Pattern::Identifier("extends".to_string()))
+            }
+            Token::Implements => {
+                self.advance();
+                Ok(Pattern::Identifier("implements".to_string()))
+            }
+            Token::Public => {
+                self.advance();
+                Ok(Pattern::Identifier("public".to_string()))
+            }
+            Token::Private => {
+                self.advance();
+                Ok(Pattern::Identifier("private".to_string()))
+            }
+            Token::Protected => {
+                self.advance();
+                Ok(Pattern::Identifier("protected".to_string()))
+            }
+            Token::Static => {
+                self.advance();
+                Ok(Pattern::Identifier("static".to_string()))
+            }
+            Token::Abstract => {
+                self.advance();
+                Ok(Pattern::Identifier("abstract".to_string()))
+            }
+            Token::Break => {
+                self.advance();
+                Ok(Pattern::Identifier("break".to_string()))
+            }
+            Token::Continue => {
+                self.advance();
+                Ok(Pattern::Identifier("continue".to_string()))
+            }
+            Token::Switch => {
+                self.advance();
+                Ok(Pattern::Identifier("switch".to_string()))
+            }
+            Token::Case => {
+                self.advance();
+                Ok(Pattern::Identifier("case".to_string()))
+            }
+            Token::Namespace => {
+                self.advance();
+                Ok(Pattern::Identifier("namespace".to_string()))
+            }
+            Token::Declare => {
+                self.advance();
+                Ok(Pattern::Identifier("declare".to_string()))
+            }
+            Token::Keyof => {
+                self.advance();
+                Ok(Pattern::Identifier("keyof".to_string()))
+            }
             Token::LBracket => {
                 self.advance();
                 let mut elements = Vec::new();
@@ -564,6 +664,110 @@ impl Parser {
                         Token::Never => {
                             self.advance();
                             "never".to_string()
+                        }
+                        Token::Package => {
+                            self.advance();
+                            "package".to_string()
+                        }
+                        Token::Const => {
+                            self.advance();
+                            "const".to_string()
+                        }
+                        Token::Final => {
+                            self.advance();
+                            "final".to_string()
+                        }
+                        Token::Let => {
+                            self.advance();
+                            "let".to_string()
+                        }
+                        Token::Var => {
+                            self.advance();
+                            "var".to_string()
+                        }
+                        Token::Function => {
+                            self.advance();
+                            "function".to_string()
+                        }
+                        Token::Class => {
+                            self.advance();
+                            "class".to_string()
+                        }
+                        Token::Interface => {
+                            self.advance();
+                            "interface".to_string()
+                        }
+                        Token::Import => {
+                            self.advance();
+                            "import".to_string()
+                        }
+                        Token::Export => {
+                            self.advance();
+                            "export".to_string()
+                        }
+                        Token::Extends => {
+                            self.advance();
+                            "extends".to_string()
+                        }
+                        Token::Implements => {
+                            self.advance();
+                            "implements".to_string()
+                        }
+                        Token::Public => {
+                            self.advance();
+                            "public".to_string()
+                        }
+                        Token::Private => {
+                            self.advance();
+                            "private".to_string()
+                        }
+                        Token::Protected => {
+                            self.advance();
+                            "protected".to_string()
+                        }
+                        Token::Static => {
+                            self.advance();
+                            "static".to_string()
+                        }
+                        Token::Abstract => {
+                            self.advance();
+                            "abstract".to_string()
+                        }
+                        Token::Break => {
+                            self.advance();
+                            "break".to_string()
+                        }
+                        Token::Continue => {
+                            self.advance();
+                            "continue".to_string()
+                        }
+                        Token::Switch => {
+                            self.advance();
+                            "switch".to_string()
+                        }
+                        Token::Case => {
+                            self.advance();
+                            "case".to_string()
+                        }
+                        Token::Namespace => {
+                            self.advance();
+                            "namespace".to_string()
+                        }
+                        Token::Declare => {
+                            self.advance();
+                            "declare".to_string()
+                        }
+                        Token::Keyof => {
+                            self.advance();
+                            "keyof".to_string()
+                        }
+                        Token::Get => {
+                            self.advance();
+                            "get".to_string()
+                        }
+                        Token::Set => {
+                            self.advance();
+                            "set".to_string()
                         }
                         t => {
                             return Err(CompileError::simple(&format!(
@@ -865,6 +1069,28 @@ impl Parser {
                 self.advance();
                 let inner = self.parse_primary_type()?;
                 TypeAnnotation::Keyof(Box::new(inner))
+            }
+            // Constructor type: new (args) => ReturnType
+            Token::New => {
+                self.advance();
+                // Parse constructor parameters
+                self.expect(&Token::LParen)?;
+                // Skip over constructor parameters
+                let mut depth = 1;
+                while depth > 0 && !self.is_at_end() {
+                    match self.advance() {
+                        Token::LParen => depth += 1,
+                        Token::RParen => depth -= 1,
+                        _ => {}
+                    }
+                }
+                // Parse return type arrow and return type
+                if self.check(&Token::Arrow) {
+                    self.advance();
+                    let _ = self.parse_type()?;
+                }
+                // For now, return Any as we don't have a Constructor type variant
+                TypeAnnotation::Any
             }
             Token::LParen => {
                 let checkpoint = self.pos;
@@ -1736,6 +1962,8 @@ impl Parser {
                 Token::Namespace => "namespace".to_string(),
                 Token::Declare => "declare".to_string(),
                 Token::Keyof => "keyof".to_string(),
+                Token::Get => "get".to_string(),
+                Token::Set => "set".to_string(),
                 Token::StringLiteral(s) => s,
                 t => {
                     return Err(CompileError::simple(&format!(
@@ -3276,7 +3504,11 @@ impl Parser {
                         Token::Enum => "enum".to_string(),
                         Token::Catch => "catch".to_string(),
                         Token::Final => "final".to_string(),
+                        Token::Package => "package".to_string(),
+                        Token::Const => "const".to_string(),
                         Token::Break => "break".to_string(),
+                        Token::Get => "get".to_string(),
+                        Token::Set => "set".to_string(),
                         Token::PrivateIdentifier(name) => format!("#{}", name),
                         t => {
                             return Err(CompileError::simple(&format!(
@@ -3319,7 +3551,11 @@ impl Parser {
                     Token::Enum => "enum".to_string(),
                     Token::Catch => "catch".to_string(),
                     Token::Final => "final".to_string(),
+                    Token::Package => "package".to_string(),
+                    Token::Const => "const".to_string(),
                     Token::Break => "break".to_string(),
+                    Token::Get => "get".to_string(),
+                    Token::Set => "set".to_string(),
                     Token::PrivateIdentifier(name) => format!("#{}", name),
                     t => {
                         return Err(CompileError::simple(&format!(
@@ -3612,6 +3848,102 @@ impl Parser {
                 self.advance();
                 Ok(Expr::Identifier(name))
             }
+            Token::Package => {
+                self.advance();
+                Ok(Expr::Identifier("package".to_string()))
+            }
+            Token::Const => {
+                self.advance();
+                Ok(Expr::Identifier("const".to_string()))
+            }
+            Token::Final => {
+                self.advance();
+                Ok(Expr::Identifier("final".to_string()))
+            }
+            Token::Native => {
+                self.advance();
+                Ok(Expr::Identifier("native".to_string()))
+            }
+            Token::Let => {
+                self.advance();
+                Ok(Expr::Identifier("let".to_string()))
+            }
+            Token::Var => {
+                self.advance();
+                Ok(Expr::Identifier("var".to_string()))
+            }
+            Token::Function => {
+                self.advance();
+                Ok(Expr::Identifier("function".to_string()))
+            }
+            Token::Class => {
+                self.advance();
+                Ok(Expr::Identifier("class".to_string()))
+            }
+            Token::Interface => {
+                self.advance();
+                Ok(Expr::Identifier("interface".to_string()))
+            }
+            Token::Export => {
+                self.advance();
+                Ok(Expr::Identifier("export".to_string()))
+            }
+            Token::Extends => {
+                self.advance();
+                Ok(Expr::Identifier("extends".to_string()))
+            }
+            Token::Implements => {
+                self.advance();
+                Ok(Expr::Identifier("implements".to_string()))
+            }
+            Token::Public => {
+                self.advance();
+                Ok(Expr::Identifier("public".to_string()))
+            }
+            Token::Private => {
+                self.advance();
+                Ok(Expr::Identifier("private".to_string()))
+            }
+            Token::Protected => {
+                self.advance();
+                Ok(Expr::Identifier("protected".to_string()))
+            }
+            Token::Static => {
+                self.advance();
+                Ok(Expr::Identifier("static".to_string()))
+            }
+            Token::Abstract => {
+                self.advance();
+                Ok(Expr::Identifier("abstract".to_string()))
+            }
+            Token::Break => {
+                self.advance();
+                Ok(Expr::Identifier("break".to_string()))
+            }
+            Token::Continue => {
+                self.advance();
+                Ok(Expr::Identifier("continue".to_string()))
+            }
+            Token::Switch => {
+                self.advance();
+                Ok(Expr::Identifier("switch".to_string()))
+            }
+            Token::Case => {
+                self.advance();
+                Ok(Expr::Identifier("case".to_string()))
+            }
+            Token::Namespace => {
+                self.advance();
+                Ok(Expr::Identifier("namespace".to_string()))
+            }
+            Token::Declare => {
+                self.advance();
+                Ok(Expr::Identifier("declare".to_string()))
+            }
+            Token::Keyof => {
+                self.advance();
+                Ok(Expr::Identifier("keyof".to_string()))
+            }
             Token::LParen => {
                 self.advance();
                 // Check for arrow function
@@ -3644,6 +3976,21 @@ impl Parser {
                 self.advance();
                 let mut properties = Vec::new();
                 while !self.check(&Token::RBrace) {
+                    // Check for getter/setter - need to lookahead to distinguish from property names
+                    // Getter: get propertyName() { ... }
+                    // Property: { get: value }
+                    let is_getter = self.check(&Token::Get)
+                        && self.pos + 2 < self.tokens.len()
+                        && matches!(self.tokens[self.pos + 1], Token::Identifier(_))
+                        && matches!(self.tokens[self.pos + 2], Token::LParen);
+                    let is_setter = self.check(&Token::Set)
+                        && self.pos + 2 < self.tokens.len()
+                        && matches!(self.tokens[self.pos + 1], Token::Identifier(_))
+                        && matches!(self.tokens[self.pos + 2], Token::LParen);
+                    if is_getter || is_setter {
+                        self.advance();
+                    }
+
                     let is_async_method =
                         if self.check(&Token::Async) && self.peek_ahead_is_identifier() {
                             self.advance();
@@ -3911,6 +4258,14 @@ impl Parser {
                             Token::Keyof => {
                                 self.advance();
                                 (PropertyKey::Identifier("keyof".to_string()), false)
+                            }
+                            Token::Get => {
+                                self.advance();
+                                (PropertyKey::Identifier("get".to_string()), false)
+                            }
+                            Token::Set => {
+                                self.advance();
+                                (PropertyKey::Identifier("set".to_string()), false)
                             }
                             Token::BooleanType => {
                                 self.advance();

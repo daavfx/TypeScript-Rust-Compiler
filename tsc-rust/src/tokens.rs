@@ -68,6 +68,8 @@ pub enum Token {
     Namespace,
     Declare,
     Keyof,
+    Get,
+    Set,
 
     // Type keywords
     NumberType,

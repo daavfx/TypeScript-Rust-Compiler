@@ -830,6 +830,8 @@ impl Lexer {
             "namespace" => Token::Namespace,
             "declare" => Token::Declare,
             "keyof" => Token::Keyof,
+            "get" => Token::Get,
+            "set" => Token::Set,
             "number" => Token::NumberType,
             "string" => Token::StringType,
             "boolean" => Token::BooleanType,
