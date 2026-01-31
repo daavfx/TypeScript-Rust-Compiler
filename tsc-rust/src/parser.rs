@@ -1374,6 +1374,10 @@ impl Parser {
                 Token::Volatile | Token::Transient | Token::Synchronized | Token::Native => {
                     self.advance(); // Consume but ignore
                 }
+                Token::Hash => {
+                    // Private field marker - will be handled with the name
+                    self.advance();
+                }
                 _ => break, // Not a modifier? Exit loop
             }
         }
@@ -1409,6 +1413,7 @@ impl Parser {
                             // Now get the actual method/field name
             name = match self.advance() {
                 Token::Identifier(n) => n,
+                Token::PrivateIdentifier(n) => format!("#{}", n),
                 _ => return Err(CompileError::simple("Expected member name after type")),
             };
         } else {
@@ -1421,6 +1426,7 @@ impl Parser {
                     }
                     n
                 }
+                Token::PrivateIdentifier(n) => format!("#{}", n),
                 _ => return Err(CompileError::simple("Expected member name")),
             };
         }

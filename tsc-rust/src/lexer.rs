@@ -222,20 +222,18 @@ impl Lexer {
             '@' => Ok(Token::At),
             '#' => {
                 // Private field: #identifier
-                if let Some(next_ch) = self.peek_next() {
-                    if next_ch.is_ascii_alphabetic() || next_ch == '_' {
-                        self.advance(); // consume the '#'
-                                        // Now consume the identifier
-                        let mut ident = String::new();
-                        while !self.is_at_end()
-                            && (self.peek().is_alphanumeric()
-                                || self.peek() == '_'
-                                || self.peek() == '$')
-                        {
-                            ident.push(self.advance());
-                        }
-                        return Ok(Token::PrivateIdentifier(ident));
+                // After advance() consumed '#', we're at the first char of identifier
+                if self.peek().is_ascii_alphabetic() || self.peek() == '_' {
+                    // Consume the identifier
+                    let mut ident = String::new();
+                    while !self.is_at_end()
+                        && (self.peek().is_alphanumeric()
+                            || self.peek() == '_'
+                            || self.peek() == '$')
+                    {
+                        ident.push(self.advance());
                     }
+                    return Ok(Token::PrivateIdentifier(ident));
                 }
                 Ok(Token::Hash)
             }
