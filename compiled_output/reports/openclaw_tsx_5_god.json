@@ -1,0 +1,16 @@
+{
+  "timestamp_utc": "2026-01-30T22:36:19.057463400Z",
+  "root": "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 5,
+  "total_discovered": 6,
+  "attempted": 5,
+  "compiled": 5,
+  "failed": 0,
+  "success_rate": 100.0,
+  "failures_by_signature": {},
+  "top_signatures": []
+}

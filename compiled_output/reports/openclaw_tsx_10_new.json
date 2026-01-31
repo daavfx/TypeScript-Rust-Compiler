@@ -1,0 +1,69 @@
+{
+  "timestamp_utc": "2026-01-30T19:59:10.858663400Z",
+  "root": "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 10,
+  "total_discovered": 11,
+  "attempted": 10,
+  "compiled": 4,
+  "failed": 6,
+  "success_rate": 40.0,
+  "failures_by_signature": {
+    "Error: Expected Comma, got Identifier(\"x89\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\chat.test.ts"
+      ]
+    },
+    "Error: Expected Comma, got LessThan": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\actions.ts"
+      ]
+    },
+    "Error: Expected LBrace, got LessThan": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\attachments.ts",
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\chat.ts"
+      ]
+    },
+    "Error: Expected property name, got ObjectType": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\config-schema.ts"
+      ]
+    },
+    "Error: Unexpected token: LessThan": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\channel.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error: Expected LBrace, got LessThan",
+      2
+    ],
+    [
+      "Error: Expected Comma, got Identifier(\"x89\")",
+      1
+    ],
+    [
+      "Error: Expected Comma, got LessThan",
+      1
+    ],
+    [
+      "Error: Expected property name, got ObjectType",
+      1
+    ],
+    [
+      "Error: Unexpected token: LessThan",
+      1
+    ]
+  ]
+}

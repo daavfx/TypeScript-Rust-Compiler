@@ -1,0 +1,19 @@
+[package]
+name = "tsc-rust-ui"
+version = "0.1.0"
+edition = "2021"
+description = "TSC-RUST UI - TypeScript Compiler with Tauri"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.5", features = ["api-all"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tsc-rust = { path = "../", package = "tsc-rust" }
+
+[features]
+# This feature is used for production builds or when `devPath` points to the filesystem
+custom-protocol = ["tauri/custom-protocol"]
+

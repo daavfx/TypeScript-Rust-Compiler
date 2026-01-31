@@ -1,0 +1,49 @@
+{
+  "timestamp_utc": "2026-01-30T19:49:35.824719500Z",
+  "root": "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 5,
+  "total_discovered": 6,
+  "attempted": 5,
+  "compiled": 1,
+  "failed": 4,
+  "success_rate": 20.0,
+  "failures_by_signature": {
+    "Error: Expected Comma, got LessThan": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\actions.ts"
+      ]
+    },
+    "Error: Expected RBrace, got Pipe": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\accounts.ts"
+      ]
+    },
+    "Error: Unexpected token: Async": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\actions.test.ts",
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\attachments.test.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error: Unexpected token: Async",
+      2
+    ],
+    [
+      "Error: Expected Comma, got LessThan",
+      1
+    ],
+    [
+      "Error: Expected RBrace, got Pipe",
+      1
+    ]
+  ]
+}

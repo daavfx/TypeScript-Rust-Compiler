@@ -1,0 +1,119 @@
+{
+  "root": "d:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main",
+  "total_considered": 10,
+  "succeeded": 0,
+  "failed": 10,
+  "stage_counts": {
+    "io": 0,
+    "lexer": 0,
+    "parser": 10,
+    "checker": 0,
+    "emit": 0
+  },
+  "top_failures": [
+    {
+      "signature": "parser: Error: Expected parameter name or type",
+      "count": 3,
+      "examples": [
+        "extensions\\bluebubbles\\src\\actions.test.ts",
+        "extensions\\bluebubbles\\src\\attachments.test.ts",
+        "extensions\\bluebubbles\\src\\chat.test.ts"
+      ]
+    },
+    {
+      "signature": "parser: Error: Expected property name",
+      "count": 2,
+      "examples": [
+        "extensions\\bluebubbles\\src\\accounts.ts",
+        "extensions\\bluebubbles\\src\\config-schema.ts"
+      ]
+    },
+    {
+      "signature": "parser: Error: Expected Comma, got LParen",
+      "count": 1,
+      "examples": [
+        "extensions\\bluebubbles\\index.ts"
+      ]
+    },
+    {
+      "signature": "parser: Error: Expected Comma, got LessThan",
+      "count": 1,
+      "examples": [
+        "extensions\\bluebubbles\\src\\actions.ts"
+      ]
+    },
+    {
+      "signature": "parser: Error: Unexpected token: LessThan",
+      "count": 1,
+      "examples": [
+        "extensions\\bluebubbles\\src\\channel.ts"
+      ]
+    },
+    {
+      "signature": "parser: Error: Expected LBrace, got LessThan",
+      "count": 1,
+      "examples": [
+        "extensions\\bluebubbles\\src\\chat.ts"
+      ]
+    },
+    {
+      "signature": "parser: Error: Expected Comma, got Question",
+      "count": 1,
+      "examples": [
+        "extensions\\bluebubbles\\src\\attachments.ts"
+      ]
+    }
+  ],
+  "failures_sample": [
+    {
+      "file": "extensions\\bluebubbles\\index.ts",
+      "stage": "parser",
+      "message": "Error: Expected Comma, got LParen"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\accounts.ts",
+      "stage": "parser",
+      "message": "Error: Expected property name"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\actions.test.ts",
+      "stage": "parser",
+      "message": "Error: Expected parameter name or type"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\actions.ts",
+      "stage": "parser",
+      "message": "Error: Expected Comma, got LessThan"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\attachments.test.ts",
+      "stage": "parser",
+      "message": "Error: Expected parameter name or type"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\attachments.ts",
+      "stage": "parser",
+      "message": "Error: Expected Comma, got Question"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\channel.ts",
+      "stage": "parser",
+      "message": "Error: Unexpected token: LessThan"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\chat.test.ts",
+      "stage": "parser",
+      "message": "Error: Expected parameter name or type"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\chat.ts",
+      "stage": "parser",
+      "message": "Error: Expected LBrace, got LessThan"
+    },
+    {
+      "file": "extensions\\bluebubbles\\src\\config-schema.ts",
+      "stage": "parser",
+      "message": "Error: Expected property name"
+    }
+  ]
+}

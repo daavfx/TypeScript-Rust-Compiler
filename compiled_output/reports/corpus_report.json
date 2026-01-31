@@ -1,0 +1,61 @@
+{
+  "timestamp_utc": "2026-01-30T18:48:20.527053600Z",
+  "root": "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx"
+  ],
+  "limit": 5,
+  "total_discovered": 6,
+  "attempted": 5,
+  "compiled": 0,
+  "failed": 5,
+  "success_rate": 0.0,
+  "failures_by_signature": {
+    "Error at 143:5: Unexpected: #": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\apps\\shared\\OpenClawKit\\Tools\\CanvasA2UI\\bootstrap.js"
+      ]
+    },
+    "Error: Expected Comma, got LParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\index.ts"
+      ]
+    },
+    "Error: Expected LParen, got LBrace": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\assets\\chrome-extension\\background.js",
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\docs\\assets\\theme.js"
+      ]
+    },
+    "Error: Unexpected token: Equals": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\assets\\chrome-extension\\options.js"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error: Expected LParen, got LBrace",
+      2
+    ],
+    [
+      "Error at 143:5: Unexpected: #",
+      1
+    ],
+    [
+      "Error: Expected Comma, got LParen",
+      1
+    ],
+    [
+      "Error: Unexpected token: Equals",
+      1
+    ]
+  ]
+}

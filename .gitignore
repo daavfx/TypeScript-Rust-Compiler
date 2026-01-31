@@ -1,0 +1,9 @@
+/*
+!.gitignore
+!/tsc-rust/
+!/tsc-rust/**
+/tsc-rust/target/
+/tsc-rust/--output/
+!/compiled_output/
+!/compiled_output/reports/
+!/compiled_output/reports/**

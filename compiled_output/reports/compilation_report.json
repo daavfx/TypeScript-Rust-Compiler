@@ -1,0 +1,26 @@
+{ 
+  "timestamp": "30/01/2026  7:44:09.99", 
+  "source": "D:\F-100.1_no_apis\clawd_rust\openclaw-main\openclaw-main", 
+  "output": "D:\F-100.1_no_apis\clawd_rust\compiled_output", 
+  "typescript": { 
+    "total": 3161, 
+    "compiled": 1, 
+    "failed": 49 
+  }, 
+  "swift": { 
+    "total": 438, 
+    "status": "lexer_ready" 
+  }, 
+  "kotlin": { 
+    "total": 63, 
+    "status": "pending" 
+  }, 
+  "shell": { 
+    "total": 47, 
+    "status": "pending" 
+  }, 
+  "css": { 
+    "total": 14, 
+    "status": "pending" 
+  } 
+} 

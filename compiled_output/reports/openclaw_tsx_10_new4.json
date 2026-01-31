@@ -1,0 +1,39 @@
+{
+  "timestamp_utc": "2026-01-30T20:05:41.275081100Z",
+  "root": "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 10,
+  "total_discovered": 11,
+  "attempted": 10,
+  "compiled": 7,
+  "failed": 3,
+  "success_rate": 70.0,
+  "failures_by_signature": {
+    "Error: Expected Comma, got Identifier(\"x89\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\chat.test.ts"
+      ]
+    },
+    "Error: Expected property name, got Catch": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\attachments.ts",
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\chat.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error: Expected property name, got Catch",
+      2
+    ],
+    [
+      "Error: Expected Comma, got Identifier(\"x89\")",
+      1
+    ]
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "user_id": "test_user",
+  "prefers_typescript_strict": false,
+  "naming_convention": "camelCase",
+  "conciseness_level": 0.5,
+  "prefers_const": true,
+  "prefers_arrow_functions": false,
+  "comment_density": 0.3,
+  "trust_score": 0.0,
+  "interaction_count": 14,
+  "success_count": 7,
+  "violation_count": 7,
+  "preferred_var_names": [],
+  "indent_size": 2,
+  "last_seen": "2026-01-30T19:16:35.078544300+00:00"
+}

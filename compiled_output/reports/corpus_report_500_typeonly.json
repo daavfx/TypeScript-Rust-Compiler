@@ -1,0 +1,1516 @@
+{
+  "timestamp_utc": "2026-01-31T01:58:33.432102600Z",
+  "root": "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 500,
+  "total_discovered": 501,
+  "attempted": 500,
+  "compiled": 238,
+  "failed": 262,
+  "success_rate": 47.599999999999994,
+  "failures_by_signature": {
+    "Error at 100:25: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\google-antigravity-auth\\index.ts"
+      ]
+    },
+    "Error at 104:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\direct.ts"
+      ]
+    },
+    "Error at 105:79: Expected Comma, got GreaterThanAngle": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\api.ts"
+      ]
+    },
+    "Error at 10:11: Expected Semicolon, got As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\memory-lancedb\\index.ts"
+      ]
+    },
+    "Error at 10:20: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\attachments\\types.ts"
+      ]
+    },
+    "Error at 10:30: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\types.ts"
+      ]
+    },
+    "Error at 10:43: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\status-issues.ts"
+      ]
+    },
+    "Error at 111:70: Expected Comma, got LBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\reply-dispatcher.ts"
+      ]
+    },
+    "Error at 114:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\auth.ts"
+      ]
+    },
+    "Error at 118:83: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\repair.ts"
+      ]
+    },
+    "Error at 119:2: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\graph-upload.ts"
+      ]
+    },
+    "Error at 11:13: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\core-bridge.ts"
+      ]
+    },
+    "Error at 11:23: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\events.ts"
+      ]
+    },
+    "Error at 11:23: Unexpected token: Class": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\probe.test.ts"
+      ]
+    },
+    "Error at 11:24: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\monitor.webhook.test.ts"
+      ]
+    },
+    "Error at 11:2: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\mentions.ts"
+      ]
+    },
+    "Error at 11:43: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\status-issues.ts"
+      ]
+    },
+    "Error at 11:45: Expected Semicolon, got Of": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\conversation-store-memory.ts"
+      ]
+    },
+    "Error at 11:4: Expected type": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\metrics.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\identity-avatar.ts"
+      ]
+    },
+    "Error at 121:33: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\whatsapp\\src\\channel.ts"
+      ]
+    },
+    "Error at 125:54: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-runner\\helpers.ts"
+      ]
+    },
+    "Error at 128:67: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\poll-types.ts"
+      ]
+    },
+    "Error at 12:21: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\chutes-oauth.test.ts"
+      ]
+    },
+    "Error at 12:24: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\location.ts"
+      ]
+    },
+    "Error at 12:29: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\order.ts"
+      ]
+    },
+    "Error at 12:34: Expected Semicolon, got Of": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\sent-message-cache.ts"
+      ]
+    },
+    "Error at 131:23: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-runner.ts"
+      ]
+    },
+    "Error at 136:17: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\chutes-oauth.ts"
+      ]
+    },
+    "Error at 137:17: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\plugin.ts"
+      ]
+    },
+    "Error at 13:11: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\monitor-handler\\inbound-media.ts"
+      ]
+    },
+    "Error at 13:11: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\types.ts"
+      ]
+    },
+    "Error at 13:22: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\session-override.ts"
+      ]
+    },
+    "Error at 13:35: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\polls.test.ts"
+      ]
+    },
+    "Error at 13:56: Expected Comma, got As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-bus.fuzz.test.ts"
+      ]
+    },
+    "Error at 141:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.background-abort.test.ts"
+      ]
+    },
+    "Error at 144:39: Expected Semicolon, got Of": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\reactions.test.ts"
+      ]
+    },
+    "Error at 145:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\bench-model.ts"
+      ]
+    },
+    "Error at 147:4: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\send.ts"
+      ]
+    },
+    "Error at 14:15: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\client\\config.ts"
+      ]
+    },
+    "Error at 14:26: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\display.ts"
+      ]
+    },
+    "Error at 14:31: Expected Comma, got Bang": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile.fuzz.test.ts"
+      ]
+    },
+    "Error at 14:35: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\conversation-store-fs.test.ts"
+      ]
+    },
+    "Error at 14:39: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\google-gemini-cli-auth\\oauth.test.ts"
+      ]
+    },
+    "Error at 14:42: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\agent-scope.ts"
+      ]
+    },
+    "Error at 14:4: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cache-trace.ts"
+      ]
+    },
+    "Error at 14:6: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bootstrap-files.ts"
+      ]
+    },
+    "Error at 14:75: Expected Comma, got Identifier(\"$\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\test-force.ts"
+      ]
+    },
+    "Error at 156:16: Unexpected: \\": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\onboarding.ts"
+      ]
+    },
+    "Error at 15:10: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\conversation-store.ts"
+      ]
+    },
+    "Error at 15:18: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\sdk-types.ts"
+      ]
+    },
+    "Error at 15:19: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\channel.directory.test.ts"
+      ]
+    },
+    "Error at 15:22: Expected RParen, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.pty-fallback.test.ts"
+      ]
+    },
+    "Error at 15:30: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\llm-task\\src\\llm-task-tool.ts"
+      ]
+    },
+    "Error at 15:41: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-state-store.test.ts"
+      ]
+    },
+    "Error at 165:95: Expected Comma, got LBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\send.ts"
+      ]
+    },
+    "Error at 16:15: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\timers.ts"
+      ]
+    },
+    "Error at 16:20: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\monitor-handler.ts"
+      ]
+    },
+    "Error at 16:2: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\probe.ts"
+      ]
+    },
+    "Error at 16:31: Expected Comma, got Bang": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile.test.ts"
+      ]
+    },
+    "Error at 17:10: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\cli.ts"
+      ]
+    },
+    "Error at 17:21: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\actions\\summary.ts"
+      ]
+    },
+    "Error at 17:4: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\threads.ts"
+      ]
+    },
+    "Error at 17:9: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\seen-tracker.ts"
+      ]
+    },
+    "Error at 18:31: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\memory-lancedb\\config.ts"
+      ]
+    },
+    "Error at 191:34: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\index.ts"
+      ]
+    },
+    "Error at 19:15: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\credentials.ts"
+      ]
+    },
+    "Error at 19:17: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\media.test.ts"
+      ]
+    },
+    "Error at 19:6: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\types.ts"
+      ]
+    },
+    "Error at 1:28: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\index.ts"
+      ]
+    },
+    "Error at 1:34: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\index.ts"
+      ]
+    },
+    "Error at 1:35: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\index.ts"
+      ]
+    },
+    "Error at 1:56: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles.ts"
+      ]
+    },
+    "Error at 209:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\zca.ts"
+      ]
+    },
+    "Error at 20:43: Expected LBrace, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\errors.ts"
+      ]
+    },
+    "Error at 215:36: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-health.ts"
+      ]
+    },
+    "Error at 21:15: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\attachments.test.ts"
+      ]
+    },
+    "Error at 21:65: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\channel-tools.ts"
+      ]
+    },
+    "Error at 23:13: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\store.ts"
+      ]
+    },
+    "Error at 23:32: Expected RParen, got As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\urbit\\http-api.ts"
+      ]
+    },
+    "Error at 243:67: Unexpected: \\": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile-http.ts"
+      ]
+    },
+    "Error at 246:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\messenger.test.ts"
+      ]
+    },
+    "Error at 24:10: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\monitor.ts"
+      ]
+    },
+    "Error at 24:14: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\types.ts"
+      ]
+    },
+    "Error at 24:15: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\onboarding.test.ts"
+      ]
+    },
+    "Error at 24:16: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\polls.ts"
+      ]
+    },
+    "Error at 24:19: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\channel.directory.test.ts"
+      ]
+    },
+    "Error at 24:31: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\twitch-client.test.ts"
+      ]
+    },
+    "Error at 252:27: Unexpected: \\": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\onboarding.ts"
+      ]
+    },
+    "Error at 25:2: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\types.ts"
+      ]
+    },
+    "Error at 26:10: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\runtime.ts"
+      ]
+    },
+    "Error at 26:17: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\client.test.ts"
+      ]
+    },
+    "Error at 27:19: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\media-stream.ts"
+      ]
+    },
+    "Error at 27:4: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\actions\\types.ts"
+      ]
+    },
+    "Error at 27:6: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles.chutes.test.ts"
+      ]
+    },
+    "Error at 284:76: Expected Comma, got Identifier(\"db\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\imessage\\src\\channel.ts"
+      ]
+    },
+    "Error at 28:10: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\tunnel.ts"
+      ]
+    },
+    "Error at 28:17: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\history.ts"
+      ]
+    },
+    "Error at 28:21: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\client\\create-client.ts"
+      ]
+    },
+    "Error at 28:32: Expected Comma, got Identifier(\"b\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\webhook-security.ts"
+      ]
+    },
+    "Error at 28:4: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\send.ts"
+      ]
+    },
+    "Error at 292:33: Unterminated regex literal": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\update-clawtributors.ts"
+      ]
+    },
+    "Error at 29:4: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\qwen-portal-auth\\oauth.ts"
+      ]
+    },
+    "Error at 2:10: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\processed-messages.ts"
+      ]
+    },
+    "Error at 2:11: Expected Semicolon, got As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\client.ts"
+      ]
+    },
+    "Error at 2:11: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\monitor-types.ts"
+      ]
+    },
+    "Error at 30:10: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\monitor.ts"
+      ]
+    },
+    "Error at 30:19: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\channel.directory.test.ts"
+      ]
+    },
+    "Error at 30:28: Expected Semicolon, got Of": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.shared.ts"
+      ]
+    },
+    "Error at 30:37: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\attachments\\graph.ts"
+      ]
+    },
+    "Error at 31:13: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\status.ts"
+      ]
+    },
+    "Error at 31:15: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\zai-fallback-repro.ts"
+      ]
+    },
+    "Error at 31:17: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\oauth.ts"
+      ]
+    },
+    "Error at 31:28: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\webhook-security.test.ts"
+      ]
+    },
+    "Error at 31:29: Expected RParen, got NumberLiteral(1.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\diagnostics-otel\\src\\service.ts"
+      ]
+    },
+    "Error at 31:74: Expected Comma, got Identifier(\"$\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\utils\\twitch.ts"
+      ]
+    },
+    "Error at 31:8: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\context-window-guard.ts"
+      ]
+    },
+    "Error at 320:58: Expected RParen, got RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\telegram\\src\\channel.ts"
+      ]
+    },
+    "Error at 32:12: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\tool.ts"
+      ]
+    },
+    "Error at 32:14: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\monitor.ts"
+      ]
+    },
+    "Error at 32:17: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\token.test.ts"
+      ]
+    },
+    "Error at 32:31: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\config.ts"
+      ]
+    },
+    "Error at 333:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\debug-claude-usage.ts"
+      ]
+    },
+    "Error at 33:21: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\probe.ts"
+      ]
+    },
+    "Error at 33:51: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\actions.ts"
+      ]
+    },
+    "Error at 343:36: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\channel.ts"
+      ]
+    },
+    "Error at 353:32: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\apply-patch.ts"
+      ]
+    },
+    "Error at 354:55: Expected Comma, got Bang": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\line\\src\\channel.ts"
+      ]
+    },
+    "Error at 35:11: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\apply-patch-update.ts"
+      ]
+    },
+    "Error at 35:48: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\client\\storage.ts"
+      ]
+    },
+    "Error at 35:4: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\types.ts"
+      ]
+    },
+    "Error at 35:6: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\types.ts"
+      ]
+    },
+    "Error at 35:6: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\oauth.fallback-to-main-agent.test.ts"
+      ]
+    },
+    "Error at 36:13: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\google-gemini-cli-auth\\oauth.ts"
+      ]
+    },
+    "Error at 36:18: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\messenger.ts"
+      ]
+    },
+    "Error at 36:82: Expected Comma, got LBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\doctor.ts"
+      ]
+    },
+    "Error at 385:33: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\channel.ts"
+      ]
+    },
+    "Error at 38:11: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\anthropic-payload-log.ts"
+      ]
+    },
+    "Error at 38:26: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\handler.ts"
+      ]
+    },
+    "Error at 38:4: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-credentials.ts"
+      ]
+    },
+    "Error at 38:6: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\index.ts"
+      ]
+    },
+    "Error at 395:2: Unexpected token: EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\channel.ts"
+      ]
+    },
+    "Error at 39:2: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send\\types.ts"
+      ]
+    },
+    "Error at 3:11: Expected Semicolon, got As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\file-consent-helpers.test.ts"
+      ]
+    },
+    "Error at 3:13: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\inbound.ts"
+      ]
+    },
+    "Error at 3:44: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\claude-cli-runner.ts"
+      ]
+    },
+    "Error at 40:10: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\monitor.ts"
+      ]
+    },
+    "Error at 417:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.test.ts"
+      ]
+    },
+    "Error at 419:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\send.ts"
+      ]
+    },
+    "Error at 41:42: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\monitor.ts"
+      ]
+    },
+    "Error at 42:11: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\monitor-helpers.ts"
+      ]
+    },
+    "Error at 43:25: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\compaction.ts"
+      ]
+    },
+    "Error at 44:13: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\translator.ts"
+      ]
+    },
+    "Error at 453:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-bus.integration.test.ts"
+      ]
+    },
+    "Error at 46:23: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\media-stream.test.ts"
+      ]
+    },
+    "Error at 46:2: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\types.ts"
+      ]
+    },
+    "Error at 47:13: Unexpected token: Class": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\diagnostics-otel\\src\\service.test.ts"
+      ]
+    },
+    "Error at 47:16: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\conversation-store-fs.ts"
+      ]
+    },
+    "Error at 47:25: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.approval-id.test.ts"
+      ]
+    },
+    "Error at 47:41: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\date-time.ts"
+      ]
+    },
+    "Error at 48:12: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\onboarding.ts"
+      ]
+    },
+    "Error at 48:15: Expected Comma, got Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-state-store.ts"
+      ]
+    },
+    "Error at 48:30: Expected Semicolon, got Of": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\store.ts"
+      ]
+    },
+    "Error at 4:10: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\urbit\\send.ts"
+      ]
+    },
+    "Error at 4:27: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\sdk.ts"
+      ]
+    },
+    "Error at 4:4: Expected type": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\targets.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\attachments\\shared.ts"
+      ]
+    },
+    "Error at 52:17: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\outbound.test.ts"
+      ]
+    },
+    "Error at 52:31: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\outbound.ts"
+      ]
+    },
+    "Error at 54:19: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\monitor.ts"
+      ]
+    },
+    "Error at 54:30: Unexpected token: Dot": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\config-schema.ts"
+      ]
+    },
+    "Error at 57:31: Unexpected token: In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\voice-mapping.ts"
+      ]
+    },
+    "Error at 57:8: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\session-override.test.ts"
+      ]
+    },
+    "Error at 59:60: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\server.ts"
+      ]
+    },
+    "Error at 59:62: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile-http.test.ts"
+      ]
+    },
+    "Error at 5:13: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\client.ts"
+      ]
+    },
+    "Error at 5:20: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\state.ts"
+      ]
+    },
+    "Error at 5:4: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\attachments.ts"
+      ]
+    },
+    "Error at 609:86: Unterminated regex literal": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\channel.ts"
+      ]
+    },
+    "Error at 60:17: Unexpected token: As": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\send.test.ts"
+      ]
+    },
+    "Error at 60:41: Expected Semicolon, got Identifier(\"maxLines\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\check-ts-max-loc.ts"
+      ]
+    },
+    "Error at 62:22: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\actions.ts"
+      ]
+    },
+    "Error at 63:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\api.test.ts"
+      ]
+    },
+    "Error at 63:87: Expected RParen, got RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\directory-live.ts"
+      ]
+    },
+    "Error at 64:8: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\store-fs.ts"
+      ]
+    },
+    "Error at 65:12: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.process.ts"
+      ]
+    },
+    "Error at 65:30: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\actions\\pins.ts"
+      ]
+    },
+    "Error at 65:31: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\tts-openai.ts"
+      ]
+    },
+    "Error at 68:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\signature.ts"
+      ]
+    },
+    "Error at 6:13: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\context.ts"
+      ]
+    },
+    "Error at 6:17: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\discovery.ts"
+      ]
+    },
+    "Error at 6:19: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\session.ts"
+      ]
+    },
+    "Error at 6:27: Expected type": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send\\targets.test.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\telephony-tts.ts"
+      ]
+    },
+    "Error at 6:34: Unexpected: \\": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\targets.ts"
+      ]
+    },
+    "Error at 6:4: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\index.ts"
+      ]
+    },
+    "Error at 72:51: Expected Comma, got LBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\attachments\\html.ts"
+      ]
+    },
+    "Error at 73:15: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\media-helpers.ts"
+      ]
+    },
+    "Error at 73:2: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\types.ts"
+      ]
+    },
+    "Error at 76:11: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\monitor.ts"
+      ]
+    },
+    "Error at 77:25: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\actions\\reactions.ts"
+      ]
+    },
+    "Error at 77:54: Unterminated regex literal": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\resolve-allowlist.ts"
+      ]
+    },
+    "Error at 7:19: Unexpected token: Class": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send.test.ts"
+      ]
+    },
+    "Error at 7:32: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\line\\src\\channel.sendPayload.test.ts"
+      ]
+    },
+    "Error at 7:35: Unexpected token: From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\index.ts"
+      ]
+    },
+    "Error at 81:24: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.ts"
+      ]
+    },
+    "Error at 81:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.process.send-keys.test.ts"
+      ]
+    },
+    "Error at 85:28: Expected Semicolon, got Of": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-backends.ts"
+      ]
+    },
+    "Error at 86:46: Expected Semicolon, got RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\telephony-audio.ts"
+      ]
+    },
+    "Error at 8:17: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\claude-cli-runner.test.ts"
+      ]
+    },
+    "Error at 8:24: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\session-mapper.test.ts"
+      ]
+    },
+    "Error at 8:26: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\api.ts"
+      ]
+    },
+    "Error at 8:29: Expected Arrow, got Identifier(\"is\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\usage.ts"
+      ]
+    },
+    "Error at 8:36: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\apply-patch.test.ts"
+      ]
+    },
+    "Error at 8:4: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\lobster\\src\\lobster-tool.ts"
+      ]
+    },
+    "Error at 91:20: Unexpected token: Slash": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile-import.ts"
+      ]
+    },
+    "Error at 92:118: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\policy.ts"
+      ]
+    },
+    "Error at 94:34: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\stt-openai-realtime.ts"
+      ]
+    },
+    "Error at 97:28: Expected Semicolon, got Of": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\monitor.ts"
+      ]
+    },
+    "Error at 98:7: Expected Comma, got Semicolon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-credentials.test.ts"
+      ]
+    },
+    "Error at 9:20: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\onboarding-helpers.ts"
+      ]
+    },
+    "Error at 9:22: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\probe.test.ts"
+      ]
+    },
+    "Error at 9:2: Unexpected token: RBrace": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\types.ts"
+      ]
+    },
+    "Error at 9:32: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\line\\src\\channel.logout.test.ts"
+      ]
+    },
+    "Error: Expected Comma": {
+      "count": 3,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\monitor.test.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\probe.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\twilio\\api.ts"
+      ]
+    },
+    "Error: Expected identifier or pattern": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\monitor-handler\\message-handler.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\outbound.ts"
+      ]
+    },
+    "Error: Expected import path": {
+      "count": 6,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-bus.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\send.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\proxy.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\protocol-gen-swift.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\protocol-gen.ts"
+      ]
+    },
+    "Error: Expected member name": {
+      "count": 10,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\urbit\\sse-client.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\twitch-client.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager.test.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\mock.ts"
+      ]
+    },
+    "Error: Expected parameter name or type": {
+      "count": 3,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\send-context.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\room-info.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\events.ts"
+      ]
+    },
+    "Error: Expected property name, got Break": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\utils.ts"
+      ]
+    },
+    "Error: Expected property name, got Default": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\memory-lancedb\\index.test.ts"
+      ]
+    },
+    "Error: Expected property name, got From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\response-generator.ts"
+      ]
+    },
+    "Error: Expected property name, got LBracket": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\channel.ts"
+      ]
+    },
+    "Error: Expected property name, got Readonly": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\base.ts"
+      ]
+    },
+    "Error: Expected property name, got Type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\line\\src\\card-command.ts"
+      ]
+    },
+    "Error: Expected type name": {
+      "count": 8,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\types.config.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\actions.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\client.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\types.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error: Expected member name",
+      10
+    ],
+    [
+      "Error: Expected type name",
+      8
+    ],
+    [
+      "Error: Expected import path",
+      6
+    ],
+    [
+      "Error: Expected Comma",
+      3
+    ],
+    [
+      "Error: Expected parameter name or type",
+      3
+    ],
+    [
+      "Error at 11:4: Expected type",
+      2
+    ],
+    [
+      "Error at 4:4: Expected type",
+      2
+    ],
+    [
+      "Error at 6:27: Expected type",
+      2
+    ],
+    [
+      "Error: Expected identifier or pattern",
+      2
+    ],
+    [
+      "Error at 100:25: Expected type",
+      1
+    ],
+    [
+      "Error at 104:2: Expected RParen, got EOF",
+      1
+    ],
+    [
+      "Error at 105:79: Expected Comma, got GreaterThanAngle",
+      1
+    ],
+    [
+      "Error at 10:11: Expected Semicolon, got As",
+      1
+    ],
+    [
+      "Error at 10:20: Expected type",
+      1
+    ],
+    [
+      "Error at 10:30: Unexpected token: Dot",
+      1
+    ],
+    [
+      "Error at 10:43: Expected Arrow, got Identifier(\"is\")",
+      1
+    ],
+    [
+      "Error at 111:70: Expected Comma, got LBrace",
+      1
+    ],
+    [
+      "Error at 114:2: Expected RParen, got EOF",
+      1
+    ],
+    [
+      "Error at 118:83: Expected RParen, got NumberLiteral(0.0)",
+      1
+    ],
+    [
+      "Error at 119:2: Unexpected token: RBrace",
+      1
+    ]
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "timestamp_utc": "2026-01-30T19:20:11.312721800Z",
+  "root": "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx"
+  ],
+  "limit": 5,
+  "total_discovered": 6,
+  "attempted": 5,
+  "compiled": 2,
+  "failed": 3,
+  "success_rate": 40.0,
+  "failures_by_signature": {
+    "Error at 143:5: Unexpected: #": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\apps\\shared\\OpenClawKit\\Tools\\CanvasA2UI\\bootstrap.js"
+      ]
+    },
+    "Error: Unexpected token: Equals": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\assets\\chrome-extension\\background.js",
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\assets\\chrome-extension\\options.js"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error: Unexpected token: Equals",
+      2
+    ],
+    [
+      "Error at 143:5: Unexpected: #",
+      1
+    ]
+  ]
+}

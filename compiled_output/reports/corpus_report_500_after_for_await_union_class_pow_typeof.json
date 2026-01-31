@@ -1,0 +1,754 @@
+{
+  "timestamp_utc": "2026-01-31T14:27:56.146773400Z",
+  "root": "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 500,
+  "total_discovered": 501,
+  "attempted": 500,
+  "compiled": 389,
+  "failed": 111,
+  "success_rate": 77.8,
+  "failures_by_signature": {
+    "Error at 104:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\direct.ts"
+      ]
+    },
+    "Error at 109:51: Expected RParen, got Identifier(\"REPLY_CACHE_MAX\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\monitor.ts"
+      ]
+    },
+    "Error at 112:22: Expected Semicolon, got Identifier(\"maxStart\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\apply-patch-update.ts"
+      ]
+    },
+    "Error at 112:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\room-info.ts"
+      ]
+    },
+    "Error at 114:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\auth.ts"
+      ]
+    },
+    "Error at 114:44: Expected RParen, got Identifier(\"storedCompaction\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\session-override.ts"
+      ]
+    },
+    "Error at 118:83: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\repair.ts"
+      ]
+    },
+    "Error at 11:51: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\session-mapper.test.ts"
+      ]
+    },
+    "Error at 132:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\server.ts"
+      ]
+    },
+    "Error at 140:21: Expected RParen, got Identifier(\"startupGraceMs\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\handler.ts"
+      ]
+    },
+    "Error at 141:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.background-abort.test.ts"
+      ]
+    },
+    "Error at 145:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\bench-model.ts"
+      ]
+    },
+    "Error at 147:27: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\conversation-store-fs.ts"
+      ]
+    },
+    "Error at 14:26: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\display.ts"
+      ]
+    },
+    "Error at 156:16: Unexpected: \\": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\onboarding.ts"
+      ]
+    },
+    "Error at 17:21: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\actions\\summary.ts"
+      ]
+    },
+    "Error at 181:23: Expected Semicolon, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.shared.ts"
+      ]
+    },
+    "Error at 185:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\order.ts"
+      ]
+    },
+    "Error at 189:42: Expected RParen, got NumberLiteral(500.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\memory-lancedb\\index.ts"
+      ]
+    },
+    "Error at 190:34: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-process-registry.ts"
+      ]
+    },
+    "Error at 191:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\qwen-portal-auth\\oauth.ts"
+      ]
+    },
+    "Error at 19:18: Expected RParen, got Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\discovery.ts"
+      ]
+    },
+    "Error at 200:32: Expected Semicolon, got RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-runner.ts"
+      ]
+    },
+    "Error at 209:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\zca.ts"
+      ]
+    },
+    "Error at 2147:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\monitor.test.ts"
+      ]
+    },
+    "Error at 214:17: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\cli.ts"
+      ]
+    },
+    "Error at 215:36: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-health.ts"
+      ]
+    },
+    "Error at 227:46: Expected Semicolon, got RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\tts-openai.ts"
+      ]
+    },
+    "Error at 228:22: Expected Comma, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\attachments.test.ts"
+      ]
+    },
+    "Error at 239:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\oauth.ts"
+      ]
+    },
+    "Error at 23:29: Expected Comma, got StringLiteral(\").replace(//+$/, \")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\google-gemini-cli-auth\\oauth.test.ts"
+      ]
+    },
+    "Error at 23:43: Expected Semicolon, got RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\claude-cli-runner.test.ts"
+      ]
+    },
+    "Error at 243:67: Unexpected: \\": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile-http.ts"
+      ]
+    },
+    "Error at 246:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\messenger.test.ts"
+      ]
+    },
+    "Error at 248:36: Expected Comma, got NumberLiteral(1.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\polls.ts"
+      ]
+    },
+    "Error at 252:27: Unexpected: \\": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\onboarding.ts"
+      ]
+    },
+    "Error at 272:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\seen-tracker.ts"
+      ]
+    },
+    "Error at 27:6: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles.chutes.test.ts"
+      ]
+    },
+    "Error at 285:2: Unexpected token: EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\memory-lancedb\\index.test.ts"
+      ]
+    },
+    "Error at 28:32: Expected Comma, got Identifier(\"b\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\webhook-security.ts"
+      ]
+    },
+    "Error at 292:33: Unterminated regex literal": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\update-clawtributors.ts"
+      ]
+    },
+    "Error at 312:9: Unexpected token: Slash": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-bus.ts"
+      ]
+    },
+    "Error at 31:29: Expected RParen, got NumberLiteral(1.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\diagnostics-otel\\src\\service.ts"
+      ]
+    },
+    "Error at 32:22: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\media.test.ts"
+      ]
+    },
+    "Error at 333:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\debug-claude-usage.ts"
+      ]
+    },
+    "Error at 335:18: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\google-antigravity-auth\\index.ts"
+      ]
+    },
+    "Error at 33:6: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-state-store.test.ts"
+      ]
+    },
+    "Error at 343:36: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\channel.ts"
+      ]
+    },
+    "Error at 353:32: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\apply-patch.ts"
+      ]
+    },
+    "Error at 35:6: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\oauth.fallback-to-main-agent.test.ts"
+      ]
+    },
+    "Error at 379:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile-http.test.ts"
+      ]
+    },
+    "Error at 395:2: Unexpected token: EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\channel.ts"
+      ]
+    },
+    "Error at 39:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\processed-messages.ts"
+      ]
+    },
+    "Error at 417:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.test.ts"
+      ]
+    },
+    "Error at 419:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\send.ts"
+      ]
+    },
+    "Error at 425:36: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\telegram\\src\\channel.ts"
+      ]
+    },
+    "Error at 426:72: Expected Semicolon, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\line\\src\\channel.ts"
+      ]
+    },
+    "Error at 43:25: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\compaction.ts"
+      ]
+    },
+    "Error at 44:26: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\client.ts"
+      ]
+    },
+    "Error at 453:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-bus.integration.test.ts"
+      ]
+    },
+    "Error at 461:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\messenger.ts"
+      ]
+    },
+    "Error at 46:23: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\media-stream.test.ts"
+      ]
+    },
+    "Error at 47:24: Expected RParen, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\probe.ts"
+      ]
+    },
+    "Error at 47:41: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\date-time.ts"
+      ]
+    },
+    "Error at 480:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile.fuzz.test.ts"
+      ]
+    },
+    "Error at 49:19: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\threads.ts"
+      ]
+    },
+    "Error at 4:34: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\sdk.ts"
+      ]
+    },
+    "Error at 53:19: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\store.ts"
+      ]
+    },
+    "Error at 545:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-bus.fuzz.test.ts"
+      ]
+    },
+    "Error at 54:32: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send.test.ts"
+      ]
+    },
+    "Error at 57:28: Expected Comma, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile.test.ts"
+      ]
+    },
+    "Error at 57:31: Unexpected token: In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\voice-mapping.ts"
+      ]
+    },
+    "Error at 57:8: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\session-override.test.ts"
+      ]
+    },
+    "Error at 57:8: Unexpected token: Unknown": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\memory-lancedb\\config.ts"
+      ]
+    },
+    "Error at 581:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\google-gemini-cli-auth\\oauth.ts"
+      ]
+    },
+    "Error at 5:20: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\state.ts"
+      ]
+    },
+    "Error at 609:86: Unterminated regex literal": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\channel.ts"
+      ]
+    },
+    "Error at 60:41: Expected Semicolon, got Identifier(\"maxLines\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\check-ts-max-loc.ts"
+      ]
+    },
+    "Error at 63:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\api.test.ts"
+      ]
+    },
+    "Error at 65:18: Expected RParen, got Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\history.ts"
+      ]
+    },
+    "Error at 68:26: Expected RParen, got Identifier(\"maxSize\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\monitor-helpers.ts"
+      ]
+    },
+    "Error at 68:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nextcloud-talk\\src\\signature.ts"
+      ]
+    },
+    "Error at 6:34: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send\\targets.test.ts"
+      ]
+    },
+    "Error at 6:34: Unexpected: \\": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\targets.ts"
+      ]
+    },
+    "Error at 706:61: Expected RParen, got NumberLiteral(256.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalo\\src\\monitor.ts"
+      ]
+    },
+    "Error at 72:11: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\core-bridge.ts"
+      ]
+    },
+    "Error at 72:18: Unexpected token: In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\failover-error.ts"
+      ]
+    },
+    "Error at 73:15: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\media-helpers.ts"
+      ]
+    },
+    "Error at 768:40: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager.ts"
+      ]
+    },
+    "Error at 77:54: Unterminated regex literal": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\resolve-allowlist.ts"
+      ]
+    },
+    "Error at 81:12: Expected RParen, got In": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\errors.ts"
+      ]
+    },
+    "Error at 81:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.process.send-keys.test.ts"
+      ]
+    },
+    "Error at 84:2: Expected RParen, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\location.ts"
+      ]
+    },
+    "Error at 86:46: Expected Semicolon, got RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\telephony-audio.ts"
+      ]
+    },
+    "Error at 89:18: Expected RParen, got Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\monitor\\index.ts"
+      ]
+    },
+    "Error at 89:8: Expected RParen, got Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.ts"
+      ]
+    },
+    "Error at 901:2: Expected Semicolon, got EOF": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\monitor.ts"
+      ]
+    },
+    "Error at 91:20: Unexpected token: Slash": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-profile-import.ts"
+      ]
+    },
+    "Error at 95:69: Expected Colon, got NumberLiteral(0.0)": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\usage.ts"
+      ]
+    },
+    "Error: Expected '>'": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\actions.ts"
+      ]
+    },
+    "Error: Expected Comma": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\probe.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\context-window-guard.ts"
+      ]
+    },
+    "Error: Expected property name, got Finally": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-runner\\helpers.ts"
+      ]
+    },
+    "Error: Expected property name, got From": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\twilio.ts"
+      ]
+    },
+    "Error: Expected property name, got LBracket": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\tlon\\src\\channel.ts"
+      ]
+    },
+    "Error: Expected property name, got Native": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\cli-credentials.ts"
+      ]
+    },
+    "Error: Expected property name, got Readonly": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\base.ts"
+      ]
+    },
+    "Error: Type 'any[]' is not assignable to type 'Array'": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\twitch-client.test.ts",
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\webhook-security.test.ts"
+      ]
+    },
+    "Error: Type 'object[]' is not assignable to type 'Array'": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\targets.ts"
+      ]
+    },
+    "Error: Unexpected 'async'": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\client.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error: Expected Comma",
+      2
+    ],
+    [
+      "Error: Type 'any[]' is not assignable to type 'Array'",
+      2
+    ],
+    [
+      "Error at 104:2: Expected RParen, got EOF",
+      1
+    ],
+    [
+      "Error at 109:51: Expected RParen, got Identifier(\"REPLY_CACHE_MAX\")",
+      1
+    ],
+    [
+      "Error at 112:22: Expected Semicolon, got Identifier(\"maxStart\")",
+      1
+    ],
+    [
+      "Error at 112:2: Expected RParen, got EOF",
+      1
+    ],
+    [
+      "Error at 114:2: Expected RParen, got EOF",
+      1
+    ],
+    [
+      "Error at 114:44: Expected RParen, got Identifier(\"storedCompaction\")",
+      1
+    ],
+    [
+      "Error at 118:83: Expected RParen, got NumberLiteral(0.0)",
+      1
+    ],
+    [
+      "Error at 11:51: Expected RParen, got In",
+      1
+    ],
+    [
+      "Error at 132:2: Expected Semicolon, got EOF",
+      1
+    ],
+    [
+      "Error at 140:21: Expected RParen, got Identifier(\"startupGraceMs\")",
+      1
+    ],
+    [
+      "Error at 141:2: Expected RParen, got EOF",
+      1
+    ],
+    [
+      "Error at 145:2: Expected Semicolon, got EOF",
+      1
+    ],
+    [
+      "Error at 147:27: Expected RParen, got In",
+      1
+    ],
+    [
+      "Error at 14:26: Expected RParen, got In",
+      1
+    ],
+    [
+      "Error at 156:16: Unexpected: \\",
+      1
+    ],
+    [
+      "Error at 17:21: Expected RParen, got In",
+      1
+    ],
+    [
+      "Error at 181:23: Expected Semicolon, got NumberLiteral(0.0)",
+      1
+    ],
+    [
+      "Error at 185:2: Expected RParen, got EOF",
+      1
+    ]
+  ]
+}

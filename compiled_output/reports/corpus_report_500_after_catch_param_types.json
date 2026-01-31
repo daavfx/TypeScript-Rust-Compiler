@@ -1,0 +1,248 @@
+{
+  "timestamp_utc": "2026-01-31T15:10:01.341886300Z",
+  "root": "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "limit": 500,
+  "total_discovered": 501,
+  "attempted": 500,
+  "compiled": 475,
+  "failed": 25,
+  "success_rate": 95.0,
+  "failures_by_signature": {
+    "Error at 114:35: Expected Comma": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\zalouser\\src\\accounts.ts"
+      ]
+    },
+    "Error at 214:17: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\cli.ts"
+      ]
+    },
+    "Error at 221:16: Expected RParen, got Comma": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\tts-openai.ts"
+      ]
+    },
+    "Error at 241:33: Expected Comma": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\googlechat\\src\\api.ts"
+      ]
+    },
+    "Error at 27:13: Expected Colon, got Identifier(\"name\")": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\providers\\base.ts"
+      ]
+    },
+    "Error at 27:6: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles.chutes.test.ts"
+      ]
+    },
+    "Error at 29:30: Unexpected token: PlusPlus": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\scripts\\debug-claude-usage.ts"
+      ]
+    },
+    "Error at 32:22: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\monitor\\media.test.ts"
+      ]
+    },
+    "Error at 33:6: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\nostr\\src\\nostr-state-store.test.ts"
+      ]
+    },
+    "Error at 35:6: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\oauth.fallback-to-main-agent.test.ts"
+      ]
+    },
+    "Error at 38:62: Expected Comma": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\acp\\session-mapper.ts"
+      ]
+    },
+    "Error at 46:23: Unexpected token: Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\media-stream.test.ts"
+      ]
+    },
+    "Error at 4:34: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\msteams\\src\\sdk.ts"
+      ]
+    },
+    "Error at 54:32: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send.test.ts"
+      ]
+    },
+    "Error at 57:8: Unexpected token: Else": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\auth-profiles\\session-override.test.ts"
+      ]
+    },
+    "Error at 57:8: Unexpected token: Unknown": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\memory-lancedb\\config.ts"
+      ]
+    },
+    "Error at 5:20: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager\\state.ts"
+      ]
+    },
+    "Error at 65:20: Expected LParen, got Star": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\telephony-audio.ts"
+      ]
+    },
+    "Error at 6:34: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\matrix\\src\\matrix\\send\\targets.test.ts"
+      ]
+    },
+    "Error at 72:11: Unexpected token: RParen": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\core-bridge.ts"
+      ]
+    },
+    "Error at 768:40: Expected type": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\voice-call\\src\\manager.ts"
+      ]
+    },
+    "Error at 794:26: Expected Comma": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\mattermost\\src\\mattermost\\monitor.ts"
+      ]
+    },
+    "Error at 89:8: Expected RParen, got Colon": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\bash-tools.exec.ts"
+      ]
+    },
+    "Error at 93:16: Unexpected token: StringType": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\src\\agents\\claude-cli-runner.test.ts"
+      ]
+    },
+    "Error: Expected '>'": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\typescript_rust\\openclaw-main\\openclaw-main\\extensions\\twitch\\src\\actions.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error at 114:35: Expected Comma",
+      1
+    ],
+    [
+      "Error at 214:17: Unexpected token: RParen",
+      1
+    ],
+    [
+      "Error at 221:16: Expected RParen, got Comma",
+      1
+    ],
+    [
+      "Error at 241:33: Expected Comma",
+      1
+    ],
+    [
+      "Error at 27:13: Expected Colon, got Identifier(\"name\")",
+      1
+    ],
+    [
+      "Error at 27:6: Unexpected token: Else",
+      1
+    ],
+    [
+      "Error at 29:30: Unexpected token: PlusPlus",
+      1
+    ],
+    [
+      "Error at 32:22: Expected type",
+      1
+    ],
+    [
+      "Error at 33:6: Unexpected token: Else",
+      1
+    ],
+    [
+      "Error at 35:6: Unexpected token: Else",
+      1
+    ],
+    [
+      "Error at 38:62: Expected Comma",
+      1
+    ],
+    [
+      "Error at 46:23: Unexpected token: Colon",
+      1
+    ],
+    [
+      "Error at 4:34: Expected type",
+      1
+    ],
+    [
+      "Error at 54:32: Expected type",
+      1
+    ],
+    [
+      "Error at 57:8: Unexpected token: Else",
+      1
+    ],
+    [
+      "Error at 57:8: Unexpected token: Unknown",
+      1
+    ],
+    [
+      "Error at 5:20: Expected type",
+      1
+    ],
+    [
+      "Error at 65:20: Expected LParen, got Star",
+      1
+    ],
+    [
+      "Error at 6:34: Expected type",
+      1
+    ],
+    [
+      "Error at 72:11: Unexpected token: RParen",
+      1
+    ]
+  ]
+}

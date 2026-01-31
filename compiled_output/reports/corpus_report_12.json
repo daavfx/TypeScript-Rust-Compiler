@@ -1,0 +1,93 @@
+{
+  "timestamp_utc": "2026-01-30T19:24:29.730337800Z",
+  "root": "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main",
+  "extensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx"
+  ],
+  "limit": 12,
+  "total_discovered": 13,
+  "attempted": 12,
+  "compiled": 2,
+  "failed": 10,
+  "success_rate": 16.666666666666664,
+  "failures_by_signature": {
+    "Error at 143:5: Unexpected: #": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\apps\\shared\\OpenClawKit\\Tools\\CanvasA2UI\\bootstrap.js"
+      ]
+    },
+    "Error: Expected Comma, got LessThan": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\actions.ts"
+      ]
+    },
+    "Error: Expected LBrace, got LessThan": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\attachments.ts"
+      ]
+    },
+    "Error: Expected RBrace, got Pipe": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\accounts.ts"
+      ]
+    },
+    "Error: Unexpected token: Async": {
+      "count": 3,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\actions.test.ts",
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\attachments.test.ts",
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\chat.test.ts"
+      ]
+    },
+    "Error: Unexpected token: Equals": {
+      "count": 2,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\assets\\chrome-extension\\background.js",
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\assets\\chrome-extension\\options.js"
+      ]
+    },
+    "Error: Unexpected token: LessThan": {
+      "count": 1,
+      "examples": [
+        "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles\\src\\channel.ts"
+      ]
+    }
+  },
+  "top_signatures": [
+    [
+      "Error: Unexpected token: Async",
+      3
+    ],
+    [
+      "Error: Unexpected token: Equals",
+      2
+    ],
+    [
+      "Error at 143:5: Unexpected: #",
+      1
+    ],
+    [
+      "Error: Expected Comma, got LessThan",
+      1
+    ],
+    [
+      "Error: Expected LBrace, got LessThan",
+      1
+    ],
+    [
+      "Error: Expected RBrace, got Pipe",
+      1
+    ],
+    [
+      "Error: Unexpected token: LessThan",
+      1
+    ]
+  ]
+}

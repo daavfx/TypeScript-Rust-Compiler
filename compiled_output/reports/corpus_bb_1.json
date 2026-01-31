@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-01-30T19:29:19.755113900Z",
+  "root": "D:\\F-100.1_no_apis\\clawd_rust\\openclaw-main\\openclaw-main\\extensions\\bluebubbles",
+  "extensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx"
+  ],
+  "limit": 1,
+  "total_discovered": 2,
+  "attempted": 1,
+  "compiled": 1,
+  "failed": 0,
+  "success_rate": 100.0,
+  "failures_by_signature": {},
+  "top_signatures": []
+}
