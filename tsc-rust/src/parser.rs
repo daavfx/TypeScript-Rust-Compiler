@@ -48,6 +48,18 @@ impl Parser {
             Token::Function => self.parse_function_decl(),
             Token::Async => self.parse_async_function(),
             Token::Class => self.parse_class_decl(),
+            Token::Abstract => {
+                // Handle abstract class or abstract method
+                self.advance(); // consume 'abstract'
+                if self.check(&Token::Class) {
+                    // Abstract class declaration
+                    self.parse_class_decl()
+                } else {
+                    // Abstract method in class - this will be handled by parse_class_member
+                    // Put back the abstract token for class member parsing
+                    Err(CompileError::simple("Unexpected abstract keyword"))
+                }
+            }
             Token::Public | Token::Private | Token::Protected => {
                 // Java declaration with visibility modifier: public class MyClass, public enum MyEnum
                 let _visibility = self.advance(); // Skip visibility modifier
