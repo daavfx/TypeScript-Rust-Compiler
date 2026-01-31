@@ -3932,7 +3932,28 @@ impl Parser {
             Token::Identifier(name) => {
                 let name = name.clone();
                 self.advance();
-                Ok(Expr::Identifier(name))
+                // Check for arrow function: param => body
+                if self.check(&Token::Arrow) {
+                    self.advance();
+                    let body = if self.check(&Token::LBrace) {
+                        self.advance();
+                        ArrowBody::Block(self.parse_block_body()?)
+                    } else {
+                        ArrowBody::Expr(Box::new(self.parse_expression()?))
+                    };
+                    Ok(Expr::ArrowFunction {
+                        params: vec![Parameter {
+                            name: Pattern::Identifier(name),
+                            type_ann: None,
+                            default: None,
+                            rest: false,
+                        }],
+                        body,
+                        is_async: false,
+                    })
+                } else {
+                    Ok(Expr::Identifier(name))
+                }
             }
             Token::Package => {
                 self.advance();
