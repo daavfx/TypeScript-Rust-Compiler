@@ -1238,6 +1238,18 @@ impl Parser {
                 self.advance();
                 let mut elements = Vec::new();
                 while !self.check(&Token::RBracket) {
+                    // Check for named tuple element: name: type
+                    // Look ahead to see if next tokens are Identifier followed by Colon
+                    let is_named = self.pos + 1 < self.tokens.len()
+                        && matches!(self.tokens[self.pos], Token::Identifier(_))
+                        && matches!(self.tokens[self.pos + 1], Token::Colon);
+
+                    if is_named {
+                        // Skip the name, we'll just parse the type
+                        self.advance(); // consume name
+                        self.advance(); // consume colon
+                    }
+
                     elements.push(self.parse_type()?);
                     if self.check(&Token::Comma) {
                         self.advance();
