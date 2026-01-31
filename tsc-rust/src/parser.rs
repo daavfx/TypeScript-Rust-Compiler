@@ -158,15 +158,13 @@ impl Parser {
 
     fn parse_namespace(&mut self) -> Result<Stmt, CompileError> {
         self.expect(&Token::Namespace)?;
-        // Skip namespace name
-        match self.advance() {
-            Token::Identifier(_) => {}
+        let name = match self.advance() {
+            Token::Identifier(n) => n,
             _ => return Err(CompileError::simple("Expected namespace name")),
-        }
-        // Parse namespace body as a block (contents are stripped in JS)
+        };
         self.expect(&Token::LBrace)?;
         let body = self.parse_block_body()?;
-        Ok(Stmt::Block(body))
+        Ok(Stmt::NamespaceDecl { name, body })
     }
 
     fn parse_async_function(&mut self) -> Result<Stmt, CompileError> {
@@ -2064,7 +2062,10 @@ impl Parser {
             return false;
         }
 
-        if matches!(self.tokens.get(i), Some(Token::Let | Token::Const | Token::Var)) {
+        if matches!(
+            self.tokens.get(i),
+            Some(Token::Let | Token::Const | Token::Var)
+        ) {
             i += 1;
         }
 
@@ -2088,9 +2089,15 @@ impl Parser {
                 Token::LBracket => bracket_depth += 1,
                 Token::RBracket => bracket_depth = bracket_depth.saturating_sub(1),
                 Token::LessThanAngle | Token::LessThan => angle_depth += 1,
-                Token::GreaterThanAngle | Token::GreaterThan => angle_depth = angle_depth.saturating_sub(1),
+                Token::GreaterThanAngle | Token::GreaterThan => {
+                    angle_depth = angle_depth.saturating_sub(1)
+                }
                 Token::Semicolon => {
-                    if paren_depth == 0 && brace_depth == 0 && bracket_depth == 0 && angle_depth == 0 {
+                    if paren_depth == 0
+                        && brace_depth == 0
+                        && bracket_depth == 0
+                        && angle_depth == 0
+                    {
                         return false;
                     }
                 }
@@ -2682,7 +2689,8 @@ impl Parser {
         let mut left = self.parse_nullish()?;
 
         while self.check(&Token::PipePipe)
-            && !(self.pos + 1 < self.tokens.len() && matches!(self.tokens[self.pos + 1], Token::Equals))
+            && !(self.pos + 1 < self.tokens.len()
+                && matches!(self.tokens[self.pos + 1], Token::Equals))
         {
             self.advance();
             let right = self.parse_nullish()?;
@@ -2700,7 +2708,8 @@ impl Parser {
         let mut left = self.parse_and()?;
 
         while self.check(&Token::QuestionQuestion)
-            && !(self.pos + 1 < self.tokens.len() && matches!(self.tokens[self.pos + 1], Token::Equals))
+            && !(self.pos + 1 < self.tokens.len()
+                && matches!(self.tokens[self.pos + 1], Token::Equals))
         {
             self.advance();
             let right = self.parse_and()?;
@@ -2718,7 +2727,8 @@ impl Parser {
         let mut left = self.parse_bitwise_or()?;
 
         while self.check(&Token::AmpAmp)
-            && !(self.pos + 1 < self.tokens.len() && matches!(self.tokens[self.pos + 1], Token::Equals))
+            && !(self.pos + 1 < self.tokens.len()
+                && matches!(self.tokens[self.pos + 1], Token::Equals))
         {
             self.advance();
             let right = self.parse_bitwise_or()?;
@@ -2763,7 +2773,8 @@ impl Parser {
     fn parse_bitwise_and(&mut self) -> Result<Expr, CompileError> {
         let mut left = self.parse_equality()?;
         while self.check(&Token::Amp)
-            && !(self.pos + 1 < self.tokens.len() && matches!(self.tokens[self.pos + 1], Token::Equals))
+            && !(self.pos + 1 < self.tokens.len()
+                && matches!(self.tokens[self.pos + 1], Token::Equals))
         {
             self.advance();
             let right = self.parse_equality()?;
@@ -2808,7 +2819,9 @@ impl Parser {
                 Token::GreaterThanGreaterThanGreaterThan => BinaryOp::UShr,
                 _ => break,
             };
-            if self.pos + 1 < self.tokens.len() && matches!(self.tokens[self.pos + 1], Token::Equals) {
+            if self.pos + 1 < self.tokens.len()
+                && matches!(self.tokens[self.pos + 1], Token::Equals)
+            {
                 break;
             }
             self.advance();
@@ -3034,7 +3047,8 @@ impl Parser {
                         Token::GreaterThan | Token::GreaterThanAngle => {
                             depth -= 1;
                             if depth == 0 {
-                                if i + 1 < self.tokens.len() && matches!(self.tokens[i + 1], Token::LParen)
+                                if i + 1 < self.tokens.len()
+                                    && matches!(self.tokens[i + 1], Token::LParen)
                                 {
                                     is_type_args = true;
                                 }
@@ -3044,7 +3058,8 @@ impl Parser {
                         Token::GreaterThanGreaterThan => {
                             depth -= 2;
                             if depth == 0 {
-                                if i + 1 < self.tokens.len() && matches!(self.tokens[i + 1], Token::LParen)
+                                if i + 1 < self.tokens.len()
+                                    && matches!(self.tokens[i + 1], Token::LParen)
                                 {
                                     is_type_args = true;
                                 }
@@ -3054,7 +3069,8 @@ impl Parser {
                         Token::GreaterThanGreaterThanGreaterThan => {
                             depth -= 3;
                             if depth == 0 {
-                                if i + 1 < self.tokens.len() && matches!(self.tokens[i + 1], Token::LParen)
+                                if i + 1 < self.tokens.len()
+                                    && matches!(self.tokens[i + 1], Token::LParen)
                                 {
                                     is_type_args = true;
                                 }
@@ -3123,6 +3139,7 @@ impl Parser {
                         Token::Catch => "catch".to_string(),
                         Token::Final => "final".to_string(),
                         Token::Break => "break".to_string(),
+                        Token::PrivateIdentifier(name) => format!("#{}", name),
                         t => {
                             return Err(CompileError::simple(&format!(
                                 "Expected property name, got {:?}",
@@ -3165,6 +3182,7 @@ impl Parser {
                     Token::Catch => "catch".to_string(),
                     Token::Final => "final".to_string(),
                     Token::Break => "break".to_string(),
+                    Token::PrivateIdentifier(name) => format!("#{}", name),
                     t => {
                         return Err(CompileError::simple(&format!(
                             "Expected property name, got {:?}",
@@ -3488,13 +3506,13 @@ impl Parser {
                 self.advance();
                 let mut properties = Vec::new();
                 while !self.check(&Token::RBrace) {
-                    let is_async_method = if self.check(&Token::Async) && self.peek_ahead_is_identifier()
-                    {
-                        self.advance();
-                        true
-                    } else {
-                        false
-                    };
+                    let is_async_method =
+                        if self.check(&Token::Async) && self.peek_ahead_is_identifier() {
+                            self.advance();
+                            true
+                        } else {
+                            false
+                        };
 
                     // Check for object spread: ...expr
                     if self.check(&Token::DotDotDot) {
@@ -3607,6 +3625,171 @@ impl Parser {
                             Token::Await => {
                                 self.advance();
                                 (PropertyKey::Identifier("await".to_string()), false)
+                            }
+                            Token::Const => {
+                                self.advance();
+                                (PropertyKey::Identifier("const".to_string()), false)
+                            }
+                            Token::Let => {
+                                self.advance();
+                                (PropertyKey::Identifier("let".to_string()), false)
+                            }
+                            Token::Var => {
+                                self.advance();
+                                (PropertyKey::Identifier("var".to_string()), false)
+                            }
+                            Token::Function => {
+                                self.advance();
+                                (PropertyKey::Identifier("function".to_string()), false)
+                            }
+                            Token::Return => {
+                                self.advance();
+                                (PropertyKey::Identifier("return".to_string()), false)
+                            }
+                            Token::If => {
+                                self.advance();
+                                (PropertyKey::Identifier("if".to_string()), false)
+                            }
+                            Token::Else => {
+                                self.advance();
+                                (PropertyKey::Identifier("else".to_string()), false)
+                            }
+                            Token::While => {
+                                self.advance();
+                                (PropertyKey::Identifier("while".to_string()), false)
+                            }
+                            Token::Do => {
+                                self.advance();
+                                (PropertyKey::Identifier("do".to_string()), false)
+                            }
+                            Token::For => {
+                                self.advance();
+                                (PropertyKey::Identifier("for".to_string()), false)
+                            }
+                            Token::Class => {
+                                self.advance();
+                                (PropertyKey::Identifier("class".to_string()), false)
+                            }
+                            Token::Interface => {
+                                self.advance();
+                                (PropertyKey::Identifier("interface".to_string()), false)
+                            }
+                            Token::Import => {
+                                self.advance();
+                                (PropertyKey::Identifier("import".to_string()), false)
+                            }
+                            Token::Export => {
+                                self.advance();
+                                (PropertyKey::Identifier("export".to_string()), false)
+                            }
+                            Token::New => {
+                                self.advance();
+                                (PropertyKey::Identifier("new".to_string()), false)
+                            }
+                            Token::This => {
+                                self.advance();
+                                (PropertyKey::Identifier("this".to_string()), false)
+                            }
+                            Token::Super => {
+                                self.advance();
+                                (PropertyKey::Identifier("super".to_string()), false)
+                            }
+                            Token::Extends => {
+                                self.advance();
+                                (PropertyKey::Identifier("extends".to_string()), false)
+                            }
+                            Token::Implements => {
+                                self.advance();
+                                (PropertyKey::Identifier("implements".to_string()), false)
+                            }
+                            Token::Public => {
+                                self.advance();
+                                (PropertyKey::Identifier("public".to_string()), false)
+                            }
+                            Token::Private => {
+                                self.advance();
+                                (PropertyKey::Identifier("private".to_string()), false)
+                            }
+                            Token::Protected => {
+                                self.advance();
+                                (PropertyKey::Identifier("protected".to_string()), false)
+                            }
+                            Token::Static => {
+                                self.advance();
+                                (PropertyKey::Identifier("static".to_string()), false)
+                            }
+                            Token::Abstract => {
+                                self.advance();
+                                (PropertyKey::Identifier("abstract".to_string()), false)
+                            }
+                            Token::Final => {
+                                self.advance();
+                                (PropertyKey::Identifier("final".to_string()), false)
+                            }
+                            Token::Package => {
+                                self.advance();
+                                (PropertyKey::Identifier("package".to_string()), false)
+                            }
+                            Token::True => {
+                                self.advance();
+                                (PropertyKey::Identifier("true".to_string()), false)
+                            }
+                            Token::False => {
+                                self.advance();
+                                (PropertyKey::Identifier("false".to_string()), false)
+                            }
+                            Token::Null => {
+                                self.advance();
+                                (PropertyKey::Identifier("null".to_string()), false)
+                            }
+                            Token::Undefined => {
+                                self.advance();
+                                (PropertyKey::Identifier("undefined".to_string()), false)
+                            }
+                            Token::Break => {
+                                self.advance();
+                                (PropertyKey::Identifier("break".to_string()), false)
+                            }
+                            Token::Continue => {
+                                self.advance();
+                                (PropertyKey::Identifier("continue".to_string()), false)
+                            }
+                            Token::Switch => {
+                                self.advance();
+                                (PropertyKey::Identifier("switch".to_string()), false)
+                            }
+                            Token::Case => {
+                                self.advance();
+                                (PropertyKey::Identifier("case".to_string()), false)
+                            }
+                            Token::Namespace => {
+                                self.advance();
+                                (PropertyKey::Identifier("namespace".to_string()), false)
+                            }
+                            Token::Declare => {
+                                self.advance();
+                                (PropertyKey::Identifier("declare".to_string()), false)
+                            }
+                            Token::Keyof => {
+                                self.advance();
+                                (PropertyKey::Identifier("keyof".to_string()), false)
+                            }
+                            Token::BooleanType => {
+                                self.advance();
+                                (PropertyKey::Identifier("boolean".to_string()), false)
+                            }
+                            Token::SymbolType => {
+                                self.advance();
+                                (PropertyKey::Identifier("symbol".to_string()), false)
+                            }
+                            Token::BigIntType => {
+                                self.advance();
+                                (PropertyKey::Identifier("bigint".to_string()), false)
+                            }
+                            Token::PrivateIdentifier(name) => {
+                                let private_name = name.clone();
+                                self.advance();
+                                (PropertyKey::Identifier(format!("#{}", private_name)), false)
                             }
                             Token::StringLiteral(_) => {
                                 if let Token::StringLiteral(s) = self.advance() {
@@ -3804,28 +3987,43 @@ impl Parser {
         while j < scan_limit {
             match &self.tokens[j] {
                 Token::Arrow
-                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 =>
+                    if depth_paren == 0
+                        && depth_brace == 0
+                        && depth_bracket == 0
+                        && depth_angle == 0 =>
                 {
                     return true;
                 }
 
                 Token::LParen => depth_paren += 1,
                 Token::RParen => {
-                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 {
+                    if depth_paren == 0
+                        && depth_brace == 0
+                        && depth_bracket == 0
+                        && depth_angle == 0
+                    {
                         return false;
                     }
                     depth_paren -= 1;
                 }
                 Token::LBrace => depth_brace += 1,
                 Token::RBrace => {
-                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 {
+                    if depth_paren == 0
+                        && depth_brace == 0
+                        && depth_bracket == 0
+                        && depth_angle == 0
+                    {
                         return false;
                     }
                     depth_brace -= 1;
                 }
                 Token::LBracket => depth_bracket += 1,
                 Token::RBracket => {
-                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 {
+                    if depth_paren == 0
+                        && depth_brace == 0
+                        && depth_bracket == 0
+                        && depth_angle == 0
+                    {
                         return false;
                     }
                     depth_bracket -= 1;
@@ -3836,7 +4034,10 @@ impl Parser {
                 Token::GreaterThanGreaterThanGreaterThan => depth_angle -= 3,
 
                 Token::Semicolon | Token::Comma | Token::EOF
-                    if depth_paren == 0 && depth_brace == 0 && depth_bracket == 0 && depth_angle == 0 =>
+                    if depth_paren == 0
+                        && depth_brace == 0
+                        && depth_bracket == 0
+                        && depth_angle == 0 =>
                 {
                     return false;
                 }

@@ -24,6 +24,11 @@ impl TypeChecker {
 
     fn check_stmt(&mut self, stmt: &Stmt) -> Result<(), CompileError> {
         match stmt {
+            Stmt::NamespaceDecl { body, .. } => {
+                for s in body {
+                    self.check_stmt(s)?;
+                }
+            }
             Stmt::VariableDecl { declarations, .. } => {
                 for decl in declarations {
                     if let Some(init) = &decl.init {

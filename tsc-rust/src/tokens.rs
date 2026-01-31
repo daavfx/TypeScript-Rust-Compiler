@@ -154,7 +154,9 @@ pub enum Token {
 
     // Special
     EOF,
-    At, // @ (decorators)
+    At,                        // @ (decorators)
+    Hash,                      // # (private fields)
+    PrivateIdentifier(String), // #identifier (private field access)
 }
 
 impl Token {

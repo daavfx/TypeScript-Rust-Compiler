@@ -320,6 +320,11 @@ pub enum Stmt {
         members: Vec<EnumMember>,
     },
 
+    NamespaceDecl {
+        name: String,
+        body: Vec<Stmt>,
+    },
+
     // Expression statement
     ExprStmt(Expr),
 

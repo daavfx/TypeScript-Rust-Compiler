@@ -151,6 +151,64 @@ impl Emitter {
                 self.output.push_str(" = {}));\n");
             }
 
+            Stmt::NamespaceDecl { name, body } => {
+                self.emit_indent();
+                self.output.push_str("var ");
+                self.output.push_str(name);
+                self.output.push_str(";\n");
+                self.emit_indent();
+                self.output.push_str("(function (");
+                self.output.push_str(name);
+                self.output.push_str(") {\n");
+                self.indent += 1;
+
+                for stmt in body {
+                    match stmt {
+                        Stmt::Export(ExportDecl::Declaration(inner)) => match inner.as_ref() {
+                            Stmt::VariableDecl { declarations, .. } => {
+                                for decl in declarations {
+                                    if let Pattern::Identifier(var_name) = &decl.name {
+                                        self.emit_indent();
+                                        self.output.push_str(name);
+                                        self.output.push('.');
+                                        self.output.push_str(var_name);
+                                        if let Some(init) = &decl.init {
+                                            self.output.push_str(" = ");
+                                            self.emit_expr(init);
+                                        } else {
+                                            self.output.push_str(" = undefined");
+                                        }
+                                        self.output.push_str(";\n");
+                                    }
+                                }
+                            }
+                            Stmt::FunctionDecl { name: fn_name, .. } => {
+                                self.emit_indent();
+                                self.output.push_str(name);
+                                self.output.push('.');
+                                self.output.push_str(fn_name);
+                                self.output.push_str(" = ");
+                                self.emit_stmt_no_newline(inner);
+                                self.output.push_str(";\n");
+                            }
+                            _ => {}
+                        },
+                        Stmt::Export(ExportDecl::Named { .. }) => {}
+                        Stmt::Export(ExportDecl::All { .. }) => {}
+                        Stmt::Export(ExportDecl::Default(_)) => {}
+                        _ => {}
+                    }
+                }
+
+                self.indent -= 1;
+                self.emit_indent();
+                self.output.push_str("})(");
+                self.output.push_str(name);
+                self.output.push_str(" || (");
+                self.output.push_str(name);
+                self.output.push_str(" = {}));\n");
+            }
+
             Stmt::ExprStmt(expr) => {
                 self.emit_indent();
                 self.emit_expr(expr);

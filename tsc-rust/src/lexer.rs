@@ -53,7 +53,9 @@ impl Lexer {
         Ok(tokens)
     }
 
-    pub fn tokenize_with_positions(&mut self) -> Result<(Vec<Token>, Vec<(usize, usize)>), CompileError> {
+    pub fn tokenize_with_positions(
+        &mut self,
+    ) -> Result<(Vec<Token>, Vec<(usize, usize)>), CompileError> {
         let mut tokens = Vec::new();
         let mut positions = Vec::new();
         if self.pos == 0
@@ -216,8 +218,27 @@ impl Lexer {
                 } else {
                     Ok(Token::Caret)
                 }
-            },
+            }
             '@' => Ok(Token::At),
+            '#' => {
+                // Private field: #identifier
+                if let Some(next_ch) = self.peek_next() {
+                    if next_ch.is_ascii_alphabetic() || next_ch == '_' {
+                        self.advance(); // consume the '#'
+                                        // Now consume the identifier
+                        let mut ident = String::new();
+                        while !self.is_at_end()
+                            && (self.peek().is_alphanumeric()
+                                || self.peek() == '_'
+                                || self.peek() == '$')
+                        {
+                            ident.push(self.advance());
+                        }
+                        return Ok(Token::PrivateIdentifier(ident));
+                    }
+                }
+                Ok(Token::Hash)
+            }
             '?' => {
                 if self.match_char('?') {
                     Ok(Token::QuestionQuestion)
@@ -917,7 +938,8 @@ impl Lexer {
         }
 
         let prev = self.source[i - 1];
-        let prev_ok = prev.is_alphanumeric() || prev == '_' || prev == '$' || prev == ')' || prev == ']';
+        let prev_ok =
+            prev.is_alphanumeric() || prev == '_' || prev == '$' || prev == ')' || prev == ']';
         if !prev_ok {
             return false;
         }
@@ -968,10 +990,15 @@ impl Lexer {
                             j += 1;
                         }
                         let next = self.source.get(j).copied().unwrap_or('\0');
-                        return matches!(next, '(' | '.' | '[' | ')' | ',' | ':' | '?' | ';' | '=' | '\0');
+                        return matches!(
+                            next,
+                            '(' | '.' | '[' | ')' | ',' | ':' | '?' | ';' | '=' | '\0'
+                        );
                     }
                 }
-                ';' | '\n' if brace_depth <= 0 && paren_depth <= 0 && bracket_depth <= 0 => return false,
+                ';' | '\n' if brace_depth <= 0 && paren_depth <= 0 && bracket_depth <= 0 => {
+                    return false
+                }
                 _ => {}
             }
 
