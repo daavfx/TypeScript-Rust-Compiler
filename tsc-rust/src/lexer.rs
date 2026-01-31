@@ -938,8 +938,13 @@ impl Lexer {
         }
 
         let prev = self.source[i - 1];
-        let prev_ok =
-            prev.is_alphanumeric() || prev == '_' || prev == '$' || prev == ')' || prev == ']';
+        // Allow type parameter lists after identifiers, closing brackets, or in type contexts (after =)
+        let prev_ok = prev.is_alphanumeric()
+            || prev == '_'
+            || prev == '$'
+            || prev == ')'
+            || prev == ']'
+            || prev == '=';
         if !prev_ok {
             return false;
         }

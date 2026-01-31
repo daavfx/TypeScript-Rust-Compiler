@@ -961,6 +961,68 @@ impl Parser {
             }
         }
 
+        // Handle generic function type: <T>(params) => ReturnType
+        // This can be either LessThanAngle (in type context) or LessThan (at type start)
+        if self.check(&Token::LessThanAngle) || self.check(&Token::LessThan) {
+            // Look ahead to see if this looks like a generic function type
+            // Pattern: <T,...>(...) => ...
+            if self.pos + 3 < self.tokens.len() {
+                let mut is_function_type = false;
+                let mut i = self.pos + 1;
+                let mut depth = 1;
+
+                // Scan through type parameters looking for matching >
+                while i < self.tokens.len() && depth > 0 {
+                    match &self.tokens[i] {
+                        Token::LessThan | Token::LessThanAngle => depth += 1,
+                        Token::GreaterThan | Token::GreaterThanAngle => {
+                            // If this > closes the type param list (depth becomes 0),
+                            // check if next token is ( for a function type
+                            if depth == 1 {
+                                if i + 1 < self.tokens.len()
+                                    && matches!(self.tokens[i + 1], Token::LParen)
+                                {
+                                    is_function_type = true;
+                                }
+                            }
+                            depth -= 1;
+                        }
+                        Token::LParen if depth == 1 => {
+                            // Found ( immediately after type params (unclosed <T>)
+                            is_function_type = true;
+                            break;
+                        }
+                        _ => {}
+                    }
+                    i += 1;
+                }
+
+                if is_function_type {
+                    // Skip generic type parameters
+                    self.skip_type_parameters()?;
+                    // Now expect function type syntax: (params) => ReturnType
+                    if self.check(&Token::LParen) {
+                        self.advance();
+                        // Skip parameters
+                        let mut depth = 1;
+                        while depth > 0 && !self.is_at_end() {
+                            match self.advance() {
+                                Token::LParen => depth += 1,
+                                Token::RParen => depth -= 1,
+                                _ => {}
+                            }
+                        }
+                        // Expect arrow and return type
+                        if self.check(&Token::Arrow) {
+                            self.advance();
+                            let _ = self.parse_type()?;
+                        }
+                        return Ok(TypeAnnotation::Any); // Return Any for now
+                    }
+                }
+            }
+        }
+
         let mut typ = match self.peek() {
             Token::NumberType => {
                 self.advance();
