@@ -3675,6 +3675,18 @@ impl Parser {
                     op: UnaryOp::PostDec,
                     operand: Box::new(expr),
                 };
+            } else if matches!(self.peek(), Token::StringLiteral(_)) {
+                // Tagged template literal: tag`template string`
+                let template = match self.advance() {
+                    Token::StringLiteral(s) => s,
+                    _ => unreachable!(),
+                };
+                // Convert to a call expression: tag(template)
+                expr = Expr::Call {
+                    callee: Box::new(expr),
+                    args: vec![Expr::StringLiteral(template)],
+                    optional: false,
+                };
             } else {
                 break;
             }
@@ -4017,6 +4029,63 @@ impl Parser {
             Token::Keyof => {
                 self.advance();
                 Ok(Expr::Identifier("keyof".to_string()))
+            }
+            // Generic arrow function: <T>(params) => body
+            Token::LessThanAngle | Token::LessThan => {
+                // Look ahead to see if this is a generic arrow function
+                // Pattern: <T,...>(...) => ...
+                let mut is_arrow = false;
+                if self.pos + 3 < self.tokens.len() {
+                    let mut i = self.pos + 1;
+                    let mut depth = 1;
+
+                    while i < self.tokens.len() && depth > 0 {
+                        match &self.tokens[i] {
+                            Token::LessThan | Token::LessThanAngle => depth += 1,
+                            Token::GreaterThan | Token::GreaterThanAngle => {
+                                if depth == 1
+                                    && i + 1 < self.tokens.len()
+                                    && matches!(self.tokens[i + 1], Token::LParen)
+                                {
+                                    // Found <T> followed by ( - this is a generic arrow function
+                                    is_arrow = true;
+                                }
+                                depth -= 1;
+                            }
+                            _ => {}
+                        }
+                        i += 1;
+                    }
+                }
+
+                if is_arrow {
+                    // Skip type parameters
+                    self.skip_type_parameters()?;
+                    // Now should be at LParen
+                    if self.check(&Token::LParen) {
+                        self.advance();
+                        let params = self.parse_parameters()?;
+                        self.expect(&Token::RParen)?;
+                        self.expect(&Token::Arrow)?;
+                        let body = if self.check(&Token::LBrace) {
+                            self.advance();
+                            ArrowBody::Block(self.parse_block_body()?)
+                        } else {
+                            ArrowBody::Expr(Box::new(self.parse_expression()?))
+                        };
+                        Ok(Expr::ArrowFunction {
+                            params,
+                            body,
+                            is_async: false,
+                        })
+                    } else {
+                        Err(CompileError::simple("Expected ( after type parameters"))
+                    }
+                } else {
+                    // Not a generic arrow function - treat as comparison operator
+                    // This shouldn't happen often in expression context
+                    Err(CompileError::simple("Unexpected < in expression context"))
+                }
             }
             Token::LParen => {
                 self.advance();
