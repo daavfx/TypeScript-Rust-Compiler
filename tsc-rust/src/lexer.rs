@@ -584,6 +584,10 @@ impl Lexer {
                                 break;
                             }
                         }
+                    } else {
+                        if !self.is_at_end() && !self.peek().is_whitespace() {
+                            let _ = self.skip_regex_like_in_template_expression();
+                        }
                     }
                 }
                 _ => {}
@@ -595,6 +599,42 @@ impl Lexer {
         } else {
             Ok(())
         }
+    }
+
+    fn skip_regex_like_in_template_expression(&mut self) -> Result<(), CompileError> {
+        let mut escaped = false;
+        let mut in_char_class = false;
+
+        while !self.is_at_end() {
+            let ch = self.advance();
+            if ch == '\n' {
+                return Ok(());
+            }
+
+            if escaped {
+                escaped = false;
+                continue;
+            }
+
+            match ch {
+                '\\' => escaped = true,
+                '[' => in_char_class = true,
+                ']' => in_char_class = false,
+                '/' if !in_char_class => break,
+                _ => {}
+            }
+        }
+
+        while !self.is_at_end() {
+            let ch = self.peek();
+            if ch.is_ascii_alphabetic() && "gimsuy".contains(ch) {
+                self.advance();
+            } else {
+                break;
+            }
+        }
+
+        Ok(())
     }
 
     fn skip_string_like(&mut self, quote: char) -> Result<(), CompileError> {
@@ -784,6 +824,7 @@ impl Lexer {
             "native" => Token::Native,
             "async" => Token::Async,
             "await" => Token::Await,
+            "yield" => Token::Yield,
             "true" => Token::True,
             "false" => Token::False,
             "null" => Token::Null,

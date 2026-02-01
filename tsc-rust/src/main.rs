@@ -59,6 +59,18 @@ fn main() {
                 dump_tokens(&source);
                 return;
             }
+            "--dump-tokens-tail" => {
+                if args.len() < 3 {
+                    eprintln!("Error: --dump-tokens-tail requires input file path");
+                    std::process::exit(1);
+                }
+                let source = fs::read_to_string(&args[2]).unwrap_or_else(|e| {
+                    eprintln!("Error: Failed to read {}: {}", args[2], e);
+                    std::process::exit(1);
+                });
+                dump_tokens_tail(&source, 200);
+                return;
+            }
             "--dump-tokens-eval" => {
                 if args.len() < 3 {
                     eprintln!("Error: --dump-tokens-eval requires TypeScript code");
@@ -185,6 +197,25 @@ fn dump_tokens(source: &str) {
         std::process::exit(1);
     });
     for (i, (tok, pos)) in tokens.iter().zip(positions.iter()).take(200).enumerate() {
+        println!("{:>4}  {:?}  @{:?}", i, tok, pos);
+    }
+}
+
+fn dump_tokens_tail(source: &str, count: usize) {
+    let mut lexer = Lexer::new(source);
+    let (tokens, positions) = lexer.tokenize_with_positions().unwrap_or_else(|e| {
+        eprintln!("Error: Tokenization failed: {}", e);
+        std::process::exit(1);
+    });
+    let len = tokens.len().min(positions.len());
+    let start = len.saturating_sub(count);
+    for (i, (tok, pos)) in tokens
+        .iter()
+        .zip(positions.iter())
+        .enumerate()
+        .skip(start)
+        .take(count)
+    {
         println!("{:>4}  {:?}  @{:?}", i, tok, pos);
     }
 }
@@ -383,6 +414,7 @@ fn print_usage() {
     eprintln!("  tsc-rust <input.ts> <output.js>");
     eprintln!("  tsc-rust --eval \"export const x = 1\"");
     eprintln!("  tsc-rust --dump-tokens <input.ts>");
+    eprintln!("  tsc-rust --dump-tokens-tail <input.ts>");
     eprintln!("  tsc-rust --dump-tokens-eval \"export type {{ A }};\"");
     eprintln!("  tsc-rust --corpus <directory> [--report <file>] [--limit <n>] [--extensions ts,tsx]");
 }

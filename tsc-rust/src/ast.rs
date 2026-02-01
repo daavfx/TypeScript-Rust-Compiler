@@ -166,6 +166,11 @@ pub enum Expr {
     // Await (planned)
     Await(Box<Expr>),
 
+    Yield {
+        expr: Option<Box<Expr>>,
+        delegate: bool, // yield*
+    },
+
     // Typeof
     Typeof(Box<Expr>),
 
@@ -489,6 +494,14 @@ pub enum ClassMember {
         accessibility: Option<Accessibility>, // Planned: public/private/protected
         readonly: bool,                       // Planned: readonly properties
     },
+    MethodSignature {
+        name: String,
+        params: Vec<Parameter>,
+        return_type: Option<TypeAnnotation>,
+        is_static: bool,
+        is_async: bool,
+        accessibility: Option<Accessibility>,
+    },
     Method {
         name: String,
         params: Vec<Parameter>,
@@ -497,6 +510,9 @@ pub enum ClassMember {
         is_static: bool,
         is_async: bool,
         accessibility: Option<Accessibility>, // Planned: access modifiers
+    },
+    ConstructorSignature {
+        params: Vec<Parameter>,
     },
     Constructor {
         // Planned: constructor support

@@ -42,6 +42,7 @@ pub enum Token {
     Native,       // Java native modifier
     Async,
     Await,
+    Yield,
     True,
     False,
     Null,

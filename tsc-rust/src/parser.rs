@@ -43,6 +43,17 @@ impl Parser {
         }
     }
 
+    fn parse_qualified_name(&mut self) -> Result<String, CompileError> {
+        let mut name = self.parse_property_name()?;
+        while self.check(&Token::Dot) {
+            self.advance();
+            let part = self.parse_property_name()?;
+            name.push('.');
+            name.push_str(&part);
+        }
+        Ok(name)
+    }
+
     fn token_to_string(&self, token: &Token) -> Option<String> {
         Some(match token {
             Token::Identifier(s) => s.clone(),
@@ -82,6 +93,7 @@ impl Parser {
             Token::Native => "native".to_string(),
             Token::Async => "async".to_string(),
             Token::Await => "await".to_string(),
+            Token::Yield => "yield".to_string(),
             Token::True => "true".to_string(),
             Token::False => "false".to_string(),
             Token::Null => "null".to_string(),
@@ -289,6 +301,12 @@ impl Parser {
     fn parse_async_function(&mut self) -> Result<Stmt, CompileError> {
         self.expect(&Token::Async)?;
         self.expect(&Token::Function)?;
+        let is_generator = if self.check(&Token::Star) {
+            self.advance();
+            true
+        } else {
+            false
+        };
 
         let name = match self.advance() {
             Token::Identifier(n) => n,
@@ -309,6 +327,11 @@ impl Parser {
             None
         };
 
+        if self.check(&Token::Semicolon) {
+            self.advance();
+            return Ok(Stmt::Empty);
+        }
+
         self.expect(&Token::LBrace)?;
         let body = self.parse_block_body()?;
 
@@ -318,7 +341,7 @@ impl Parser {
             return_type,
             body,
             is_async: true,
-            is_generator: false,
+            is_generator,
         })
     }
 
@@ -1282,6 +1305,10 @@ impl Parser {
                 };
                 TypeAnnotation::TypeReference(name, type_args)
             }
+            Token::This => {
+                self.advance();
+                TypeAnnotation::TypeReference("this".to_string(), vec![])
+            }
             // String literal types: "pending" | "active"
             Token::StringLiteral(s) => {
                 let s = s.clone();
@@ -1364,6 +1391,12 @@ impl Parser {
 
     fn parse_function_decl(&mut self) -> Result<Stmt, CompileError> {
         self.expect(&Token::Function)?;
+        let is_generator = if self.check(&Token::Star) {
+            self.advance();
+            true
+        } else {
+            false
+        };
 
         let name = match self.advance() {
             Token::Identifier(n) => n,
@@ -1384,6 +1417,11 @@ impl Parser {
             None
         };
 
+        if self.check(&Token::Semicolon) {
+            self.advance();
+            return Ok(Stmt::Empty);
+        }
+
         self.expect(&Token::LBrace)?;
         let body = self.parse_block_body()?;
 
@@ -1393,7 +1431,7 @@ impl Parser {
             return_type,
             body,
             is_async: false,
-            is_generator: false,
+            is_generator,
         })
     }
 
@@ -1420,6 +1458,21 @@ impl Parser {
             }
 
             let mut type_ann = None;
+
+            if self.check(&Token::This) {
+                self.advance();
+                if self.check(&Token::Question) {
+                    self.advance();
+                }
+                if self.check(&Token::Colon) {
+                    self.advance();
+                    let _ = self.parse_type()?;
+                }
+                if !self.check(&Token::RParen) {
+                    self.expect(&Token::Comma)?;
+                }
+                continue;
+            }
 
             let name = match self.peek() {
                 Token::LBrace | Token::LBracket => {
@@ -1452,6 +1505,32 @@ impl Parser {
                         _ => unreachable!(),
                     };
 
+                    if self.check(&Token::Question) {
+                        self.advance();
+                    }
+                    if self.check(&Token::Colon) {
+                        self.advance();
+                        type_ann = Some(self.parse_type()?);
+                    }
+                    Pattern::Identifier(first_identifier)
+                }
+                Token::NumberType
+                | Token::StringType
+                | Token::BooleanType
+                | Token::Void
+                | Token::ObjectType
+                | Token::SymbolType
+                | Token::BigIntType => {
+                    let first_identifier = match self.advance() {
+                        Token::NumberType => "number".to_string(),
+                        Token::StringType => "string".to_string(),
+                        Token::BooleanType => "boolean".to_string(),
+                        Token::Void => "void".to_string(),
+                        Token::ObjectType => "object".to_string(),
+                        Token::SymbolType => "symbol".to_string(),
+                        Token::BigIntType => "bigint".to_string(),
+                        _ => unreachable!(),
+                    };
                     if self.check(&Token::Question) {
                         self.advance();
                     }
@@ -1559,10 +1638,7 @@ impl Parser {
                 }
                 Some("()".to_string())
             } else {
-                let base = match self.advance() {
-                    Token::Identifier(n) => n,
-                    _ => return Err(CompileError::simple("Expected class name after extends")),
-                };
+                let base = self.parse_qualified_name()?;
                 self.skip_type_parameters()?;
                 Some(base)
             }
@@ -1575,14 +1651,7 @@ impl Parser {
             self.advance();
             let mut interfaces = Vec::new();
             loop {
-                let interface_name = match self.advance() {
-                    Token::Identifier(n) => n,
-                    _ => {
-                        return Err(CompileError::simple(
-                            "Expected interface name after implements",
-                        ))
-                    }
-                };
+                let interface_name = self.parse_qualified_name()?;
 
                 // Skip generic type arguments on implemented interfaces
                 self.skip_type_parameters()?;
@@ -1792,6 +1861,21 @@ impl Parser {
                         break;
                     }
                 }
+            }
+
+            if self.check(&Token::Semicolon) {
+                self.advance();
+                if is_constructor {
+                    return Ok(ClassMember::ConstructorSignature { params });
+                }
+                return Ok(ClassMember::MethodSignature {
+                    name,
+                    params,
+                    return_type,
+                    is_static,
+                    is_async,
+                    accessibility,
+                });
             }
 
             self.expect(&Token::LBrace)?;
@@ -2471,10 +2555,12 @@ impl Parser {
 
     fn parse_block_body(&mut self) -> Result<Vec<Stmt>, CompileError> {
         let mut body = Vec::new();
-        while !self.check(&Token::RBrace) {
+        while !self.check(&Token::RBrace) && !self.is_at_end() {
             body.push(self.parse_statement()?);
         }
-        self.expect(&Token::RBrace)?;
+        if self.check(&Token::RBrace) {
+            self.expect(&Token::RBrace)?;
+        }
         Ok(body)
     }
 
@@ -2520,7 +2606,9 @@ impl Parser {
                 self.expect(&Token::Comma)?;
                 self.expect(&Token::LBrace)?;
                 while !self.check(&Token::RBrace) {
-                    let spec_is_type_only = if self.check(&Token::Type) {
+                    let spec_is_type_only = if self.check(&Token::Type)
+                        && !matches!(self.tokens.get(self.pos + 1), Some(Token::Comma | Token::RBrace))
+                    {
                         self.advance();
                         true
                     } else {
@@ -2548,7 +2636,9 @@ impl Parser {
             // Named imports: import { x, y } from "module"
             self.advance();
             while !self.check(&Token::RBrace) {
-                let spec_is_type_only = if self.check(&Token::Type) {
+                let spec_is_type_only = if self.check(&Token::Type)
+                    && !matches!(self.tokens.get(self.pos + 1), Some(Token::Comma | Token::RBrace))
+                {
                     self.advance();
                     true
                 } else {
@@ -3593,6 +3683,27 @@ impl Parser {
                 self.advance();
                 let expr = self.parse_unary()?;
                 Ok(Expr::Await(Box::new(expr)))
+            }
+            Token::Yield => {
+                self.advance();
+                let delegate = if self.check(&Token::Star) {
+                    self.advance();
+                    true
+                } else {
+                    false
+                };
+                let expr = if self.check(&Token::Semicolon)
+                    || self.check(&Token::Comma)
+                    || self.check(&Token::RParen)
+                    || self.check(&Token::RBrace)
+                    || self.check(&Token::RBracket)
+                    || self.check(&Token::EOF)
+                {
+                    None
+                } else {
+                    Some(Box::new(self.parse_unary()?))
+                };
+                Ok(Expr::Yield { expr, delegate })
             }
             Token::Async => {
                 self.advance();

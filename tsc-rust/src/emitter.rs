@@ -53,13 +53,18 @@ impl Emitter {
                 params,
                 body,
                 is_async,
+                is_generator,
                 ..
             } => {
                 self.emit_indent();
                 if *is_async {
                     self.output.push_str("async ");
                 }
-                self.output.push_str("function ");
+                if *is_generator {
+                    self.output.push_str("function* ");
+                } else {
+                    self.output.push_str("function ");
+                }
                 self.output.push_str(name);
                 self.output.push('(');
                 self.emit_params(params);
@@ -1024,6 +1029,17 @@ impl Emitter {
             Expr::Await(e) => {
                 self.output.push_str("await ");
                 self.emit_expr(e);
+            }
+            Expr::Yield { expr, delegate } => {
+                if *delegate {
+                    self.output.push_str("yield*");
+                } else {
+                    self.output.push_str("yield");
+                }
+                if let Some(e) = expr {
+                    self.output.push(' ');
+                    self.emit_expr(e);
+                }
             }
             Expr::Typeof(e) => {
                 self.output.push_str("typeof ");
