@@ -137,7 +137,15 @@ impl Parser {
         }
 
         match self.peek() {
-            Token::Let | Token::Const | Token::Var => self.parse_variable_decl(),
+            Token::Const => {
+                if matches!(self.tokens.get(self.pos + 1), Some(Token::Enum)) {
+                    self.advance();
+                    self.parse_enum_decl()
+                } else {
+                    self.parse_variable_decl()
+                }
+            }
+            Token::Let | Token::Var => self.parse_variable_decl(),
             Token::Function => self.parse_function_decl(),
             Token::Async => self.parse_async_function(),
             Token::Class => self.parse_class_decl(),
@@ -167,7 +175,13 @@ impl Parser {
                 }
             }
             Token::Interface => self.parse_interface_decl(),
-            Token::Type => self.parse_type_alias(),
+            Token::Type => {
+                if matches!(self.tokens.get(self.pos + 1), Some(Token::Identifier(_))) {
+                    self.parse_type_alias()
+                } else {
+                    self.parse_expr_statement()
+                }
+            }
             Token::Enum => self.parse_enum_decl(),
             Token::Return => self.parse_return(),
             Token::Throw => self.parse_throw(),
@@ -310,6 +324,19 @@ impl Parser {
 
     fn parse_declare(&mut self) -> Result<Stmt, CompileError> {
         self.expect(&Token::Declare)?;
+        if let Token::Identifier(name) = self.peek() {
+            if name == "global" {
+                self.advance();
+                if self.check(&Token::LBrace) {
+                    self.advance();
+                    while !self.check(&Token::RBrace) && !self.is_at_end() {
+                        let _ = self.parse_statement()?;
+                    }
+                    self.expect(&Token::RBrace)?;
+                }
+                return Ok(Stmt::Empty);
+            }
+        }
         // Skip the declaration (ambient declarations are stripped)
         // Could be: declare function, declare class, declare namespace, etc.
         match self.peek() {
@@ -627,6 +654,42 @@ impl Parser {
             Token::Keyof => {
                 self.advance();
                 Ok(Pattern::Identifier("keyof".to_string()))
+            }
+            Token::Get => {
+                self.advance();
+                Ok(Pattern::Identifier("get".to_string()))
+            }
+            Token::Set => {
+                self.advance();
+                Ok(Pattern::Identifier("set".to_string()))
+            }
+            Token::NumberType => {
+                self.advance();
+                Ok(Pattern::Identifier("number".to_string()))
+            }
+            Token::StringType => {
+                self.advance();
+                Ok(Pattern::Identifier("string".to_string()))
+            }
+            Token::BooleanType => {
+                self.advance();
+                Ok(Pattern::Identifier("boolean".to_string()))
+            }
+            Token::Void => {
+                self.advance();
+                Ok(Pattern::Identifier("void".to_string()))
+            }
+            Token::ObjectType => {
+                self.advance();
+                Ok(Pattern::Identifier("object".to_string()))
+            }
+            Token::SymbolType => {
+                self.advance();
+                Ok(Pattern::Identifier("symbol".to_string()))
+            }
+            Token::BigIntType => {
+                self.advance();
+                Ok(Pattern::Identifier("bigint".to_string()))
             }
             Token::LBracket => {
                 self.advance();
@@ -1484,9 +1547,24 @@ impl Parser {
 
         let extends = if self.check(&Token::Extends) {
             self.advance();
-            match self.advance() {
-                Token::Identifier(n) => Some(n),
-                _ => return Err(CompileError::simple("Expected class name after extends")),
+            if self.check(&Token::LParen) {
+                self.advance();
+                let mut depth = 1usize;
+                while depth > 0 && !self.is_at_end() {
+                    match self.advance() {
+                        Token::LParen => depth += 1,
+                        Token::RParen => depth -= 1,
+                        _ => {}
+                    }
+                }
+                Some("()".to_string())
+            } else {
+                let base = match self.advance() {
+                    Token::Identifier(n) => n,
+                    _ => return Err(CompileError::simple("Expected class name after extends")),
+                };
+                self.skip_type_parameters()?;
+                Some(base)
             }
         } else {
             None
@@ -1634,119 +1712,45 @@ impl Parser {
         {
             self.advance(); // Skip return type
                             // Now get the actual method/field name
-            name = match self.advance() {
-                Token::Identifier(n) => n,
-                Token::PrivateIdentifier(n) => format!("#{}", n),
-                Token::From => "from".to_string(),
-                Token::Default => "default".to_string(),
-                Token::Type => "type".to_string(),
-                Token::As => "as".to_string(),
-                Token::In => "in".to_string(),
-                Token::Of => "of".to_string(),
-                Token::Any => "any".to_string(),
-                Token::Unknown => "unknown".to_string(),
-                Token::Never => "never".to_string(),
-                Token::Native => "native".to_string(),
-                Token::Async => "async".to_string(),
-                Token::Await => "await".to_string(),
-                Token::Try => "try".to_string(),
-                Token::Catch => "catch".to_string(),
-                Token::Finally => "finally".to_string(),
-                Token::Throw => "throw".to_string(),
-                Token::Readonly => "readonly".to_string(),
-                Token::Final => "final".to_string(),
-                Token::Break => "break".to_string(),
-                Token::Const => "const".to_string(),
-                Token::Let => "let".to_string(),
-                Token::Var => "var".to_string(),
-                Token::Function => "function".to_string(),
-                Token::Return => "return".to_string(),
-                Token::If => "if".to_string(),
-                Token::Else => "else".to_string(),
-                Token::While => "while".to_string(),
-                Token::Do => "do".to_string(),
-                Token::For => "for".to_string(),
-                Token::Class => "class".to_string(),
-                Token::Interface => "interface".to_string(),
-                Token::Import => "import".to_string(),
-                Token::Export => "export".to_string(),
-                Token::New => "new".to_string(),
-                Token::Extends => "extends".to_string(),
-                Token::Implements => "implements".to_string(),
-                Token::Public => "public".to_string(),
-                Token::Private => "private".to_string(),
-                Token::Protected => "protected".to_string(),
-                Token::Static => "static".to_string(),
-                Token::Abstract => "abstract".to_string(),
-                Token::Package => "package".to_string(),
-                Token::Continue => "continue".to_string(),
-                Token::Switch => "switch".to_string(),
-                Token::Case => "case".to_string(),
-                Token::Namespace => "namespace".to_string(),
-                Token::Declare => "declare".to_string(),
-                Token::Keyof => "keyof".to_string(),
-                _ => return Err(CompileError::simple("Expected member name after type")),
+            name = if self.check(&Token::LBracket) {
+                self.advance();
+                let _ = self.parse_expression()?;
+                self.expect(&Token::RBracket)?;
+                "[]".to_string()
+            } else if let Token::StringLiteral(s) = self.peek() {
+                let s = s.clone();
+                self.advance();
+                s
+            } else if let Token::NumberLiteral(n) = self.peek() {
+                let n = *n;
+                self.advance();
+                n.to_string()
+            } else {
+                self.parse_property_name()?
             };
         } else {
             // Could be constructor (same name as class) or regular identifier
-            name = match self.advance() {
-                Token::Identifier(n) => {
-                    // Check if this might be a constructor by looking ahead for parentheses
-                    if self.check(&Token::LParen) {
-                        is_constructor = true;
-                    }
-                    n
+            name = if matches!(self.peek(), Token::Identifier(_)) {
+                let n = self.parse_property_name()?;
+                if self.check(&Token::LParen) {
+                    is_constructor = true;
                 }
-                Token::PrivateIdentifier(n) => format!("#{}", n),
-                Token::From => "from".to_string(),
-                Token::Default => "default".to_string(),
-                Token::Type => "type".to_string(),
-                Token::As => "as".to_string(),
-                Token::In => "in".to_string(),
-                Token::Of => "of".to_string(),
-                Token::Any => "any".to_string(),
-                Token::Unknown => "unknown".to_string(),
-                Token::Never => "never".to_string(),
-                Token::Native => "native".to_string(),
-                Token::Async => "async".to_string(),
-                Token::Await => "await".to_string(),
-                Token::Try => "try".to_string(),
-                Token::Catch => "catch".to_string(),
-                Token::Finally => "finally".to_string(),
-                Token::Throw => "throw".to_string(),
-                Token::Readonly => "readonly".to_string(),
-                Token::Final => "final".to_string(),
-                Token::Break => "break".to_string(),
-                Token::Const => "const".to_string(),
-                Token::Let => "let".to_string(),
-                Token::Var => "var".to_string(),
-                Token::Function => "function".to_string(),
-                Token::Return => "return".to_string(),
-                Token::If => "if".to_string(),
-                Token::Else => "else".to_string(),
-                Token::While => "while".to_string(),
-                Token::Do => "do".to_string(),
-                Token::For => "for".to_string(),
-                Token::Class => "class".to_string(),
-                Token::Interface => "interface".to_string(),
-                Token::Import => "import".to_string(),
-                Token::Export => "export".to_string(),
-                Token::New => "new".to_string(),
-                Token::Extends => "extends".to_string(),
-                Token::Implements => "implements".to_string(),
-                Token::Public => "public".to_string(),
-                Token::Private => "private".to_string(),
-                Token::Protected => "protected".to_string(),
-                Token::Static => "static".to_string(),
-                Token::Abstract => "abstract".to_string(),
-                Token::Package => "package".to_string(),
-                Token::Continue => "continue".to_string(),
-                Token::Switch => "switch".to_string(),
-                Token::Case => "case".to_string(),
-                Token::Namespace => "namespace".to_string(),
-                Token::Declare => "declare".to_string(),
-                Token::Keyof => "keyof".to_string(),
-                _ => return Err(CompileError::simple("Expected member name")),
+                n
+            } else if self.check(&Token::LBracket) {
+                self.advance();
+                let _ = self.parse_expression()?;
+                self.expect(&Token::RBracket)?;
+                "[]".to_string()
+            } else if let Token::StringLiteral(s) = self.peek() {
+                let s = s.clone();
+                self.advance();
+                s
+            } else if let Token::NumberLiteral(n) = self.peek() {
+                let n = *n;
+                self.advance();
+                n.to_string()
+            } else {
+                self.parse_property_name()?
             };
         }
 
@@ -2503,17 +2507,11 @@ impl Parser {
                 // Namespace import: import * as name from "module"
                 self.expect(&Token::Star)?;
                 self.expect(&Token::As)?;
-                let name = match self.advance() {
-                    Token::Identifier(n) => n,
-                    _ => return Err(CompileError::simple("Expected namespace name")),
-                };
+                let name = self.parse_property_name()?;
                 specifiers.push(ImportSpecifier::Namespace(name));
             } else if !self.check(&Token::From) {
                 // Default import: import name from "module"
-                let name = match self.advance() {
-                    Token::Identifier(n) => n,
-                    _ => return Err(CompileError::simple("Expected import name")),
-                };
+                let name = self.parse_property_name()?;
                 specifiers.push(ImportSpecifier::Default(name));
             }
 
@@ -2528,16 +2526,10 @@ impl Parser {
                     } else {
                         false
                     };
-                    let imported = match self.advance() {
-                        Token::Identifier(n) => n,
-                        _ => return Err(CompileError::simple("Expected import name")),
-                    };
+                    let imported = self.parse_property_name()?;
                     let local = if self.check(&Token::As) {
                         self.advance();
-                        match self.advance() {
-                            Token::Identifier(n) => n,
-                            _ => return Err(CompileError::simple("Expected alias")),
-                        }
+                        self.parse_property_name()?
                     } else {
                         imported.clone()
                     };
@@ -2562,16 +2554,10 @@ impl Parser {
                 } else {
                     false
                 };
-                let imported = match self.advance() {
-                    Token::Identifier(n) => n,
-                    _ => return Err(CompileError::simple("Expected import name")),
-                };
+                let imported = self.parse_property_name()?;
                 let local = if self.check(&Token::As) {
                     self.advance();
-                    match self.advance() {
-                        Token::Identifier(n) => n,
-                        _ => return Err(CompileError::simple("Expected alias")),
-                    }
+                    self.parse_property_name()?
                 } else {
                     imported.clone()
                 };
@@ -2596,6 +2582,22 @@ impl Parser {
                 Token::StringLiteral(s) => s,
                 _ => return Err(CompileError::simple("Expected module path")),
             };
+            if let Token::Identifier(name) = self.peek() {
+                if name == "with" || name == "assert" {
+                    self.advance();
+                    if self.check(&Token::LBrace) {
+                        self.advance();
+                        let mut depth = 1usize;
+                        while depth > 0 && !self.is_at_end() {
+                            match self.advance() {
+                                Token::LBrace => depth += 1,
+                                Token::RBrace => depth -= 1,
+                                _ => {}
+                            }
+                        }
+                    }
+                }
+            }
             self.expect_semicolon()?;
             Ok(Stmt::Import {
                 specifiers,
@@ -2608,6 +2610,22 @@ impl Parser {
                 Token::StringLiteral(s) => s,
                 _ => return Err(CompileError::simple("Expected module path")),
             };
+            if let Token::Identifier(name) = self.peek() {
+                if name == "with" || name == "assert" {
+                    self.advance();
+                    if self.check(&Token::LBrace) {
+                        self.advance();
+                        let mut depth = 1usize;
+                        while depth > 0 && !self.is_at_end() {
+                            match self.advance() {
+                                Token::LBrace => depth += 1,
+                                Token::RBrace => depth -= 1,
+                                _ => {}
+                            }
+                        }
+                    }
+                }
+            }
             self.expect_semicolon()?;
             Ok(Stmt::Import {
                 specifiers,
@@ -2627,6 +2645,13 @@ impl Parser {
     fn parse_export(&mut self) -> Result<Stmt, CompileError> {
         self.expect(&Token::Export)?;
 
+        if self.check(&Token::Default) {
+            self.advance();
+            let _ = self.parse_expression()?;
+            self.expect_semicolon()?;
+            return Ok(Stmt::Empty);
+        }
+
         // export type { x, y } or export type { x as y } from "module"
         if self.check(&Token::Type) {
             let saved_pos = self.pos;
@@ -2638,16 +2663,10 @@ impl Parser {
                     if self.check(&Token::Type) {
                         self.advance();
                     }
-                    let local = match self.advance() {
-                        Token::Identifier(n) => n,
-                        _ => return Err(CompileError::simple("Expected export name")),
-                    };
+                    let local = self.parse_property_name()?;
                     let exported = if self.check(&Token::As) {
                         self.advance();
-                        match self.advance() {
-                            Token::Identifier(n) => n,
-                            _ => return Err(CompileError::simple("Expected alias")),
-                        }
+                        self.parse_property_name()?
                     } else {
                         local.clone()
                     };
@@ -2679,6 +2698,10 @@ impl Parser {
         // export * from "module"
         if self.check(&Token::Star) {
             self.expect(&Token::Star)?;
+            if self.check(&Token::As) {
+                self.advance();
+                let _ = self.parse_property_name()?;
+            }
             self.expect(&Token::From)?;
             let source = match self.advance() {
                 Token::StringLiteral(s) => s,
@@ -2696,16 +2719,10 @@ impl Parser {
                 if self.check(&Token::Type) {
                     self.advance();
                 }
-                let local = match self.advance() {
-                    Token::Identifier(n) => n,
-                    _ => return Err(CompileError::simple("Expected export name")),
-                };
+                let local = self.parse_property_name()?;
                 let exported = if self.check(&Token::As) {
                     self.advance();
-                    match self.advance() {
-                        Token::Identifier(n) => n,
-                        _ => return Err(CompileError::simple("Expected alias")),
-                    }
+                    self.parse_property_name()?
                 } else {
                     local.clone()
                 };
@@ -3771,7 +3788,34 @@ impl Parser {
             }
             Token::Function => {
                 self.advance();
-                Ok(Expr::Identifier("function".to_string()))
+                if self.check(&Token::Star) {
+                    self.advance();
+                }
+                let name = if let Token::Identifier(n) = self.peek() {
+                    let n = n.clone();
+                    self.advance();
+                    Some(n)
+                } else {
+                    None
+                };
+                self.expect(&Token::LParen)?;
+                let params = self.parse_parameters()?;
+                self.expect(&Token::RParen)?;
+                let return_type = if self.check(&Token::Colon) {
+                    self.advance();
+                    Some(self.parse_type()?)
+                } else {
+                    None
+                };
+                self.expect(&Token::LBrace)?;
+                let body = self.parse_block_body()?;
+                Ok(Expr::FunctionExpr {
+                    name,
+                    params,
+                    return_type,
+                    body,
+                    is_async: false,
+                })
             }
             Token::Class => {
                 self.advance();
@@ -3841,6 +3885,14 @@ impl Parser {
                 self.advance();
                 Ok(Expr::Identifier("keyof".to_string()))
             }
+            Token::Get => {
+                self.advance();
+                Ok(Expr::Identifier("get".to_string()))
+            }
+            Token::Set => {
+                self.advance();
+                Ok(Expr::Identifier("set".to_string()))
+            }
             // Generic arrow function: <T>(params) => body
             Token::LessThanAngle | Token::LessThan => {
                 // Look ahead to see if this is a generic arrow function
@@ -3877,6 +3929,12 @@ impl Parser {
                         self.advance();
                         let params = self.parse_parameters()?;
                         self.expect(&Token::RParen)?;
+                        let _return_type = if self.check(&Token::Colon) {
+                            self.advance();
+                            Some(self.parse_type()?)
+                        } else {
+                            None
+                        };
                         self.expect(&Token::Arrow)?;
                         let body = if self.check(&Token::LBrace) {
                             self.advance();
@@ -3901,7 +3959,9 @@ impl Parser {
             Token::LParen => {
                 self.advance();
                 // Check for arrow function
-                if self.check(&Token::RParen) || self.is_arrow_function_params() {
+                if !matches!(self.peek(), Token::Function)
+                    && (self.check(&Token::RParen) || self.is_arrow_function_params())
+                {
                     return self.parse_arrow_function();
                 }
                 let expr = self.parse_expression()?;

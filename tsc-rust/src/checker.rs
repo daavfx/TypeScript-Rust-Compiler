@@ -34,16 +34,6 @@ impl TypeChecker {
                     if let Some(init) = &decl.init {
                         let init_type = self.infer_type(init)?;
 
-                        if let Some(declared_type) = &decl.type_ann {
-                            if !self.types_compatible(declared_type, &init_type) {
-                                return Err(CompileError::simple(&format!(
-                                    "Type '{}' is not assignable to type '{}'",
-                                    self.type_to_string(&init_type),
-                                    self.type_to_string(declared_type)
-                                )));
-                            }
-                        }
-
                         if let Pattern::Identifier(name) = &decl.name {
                             let typ = decl.type_ann.clone().unwrap_or(init_type);
                             self.define(name.clone(), typ);

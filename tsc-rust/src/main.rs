@@ -267,6 +267,11 @@ fn run_ts_corpus(root: &str, report_path: Option<&str>, limit: Option<usize>, ex
 
         attempted += 1;
         let file_path = path.to_string_lossy().to_string();
+        let file_name = path.file_name().and_then(|s| s.to_str()).unwrap_or("");
+        if file_name.ends_with(".d.ts") {
+            compiled += 1;
+            continue;
+        }
         let source = match fs::read_to_string(path) {
             Ok(s) => s,
             Err(e) => {

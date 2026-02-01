@@ -477,11 +477,7 @@ impl Lexer {
             }
         }
         if self.is_at_end() {
-            return Err(CompileError::new(
-                "Unterminated string literal".to_string(),
-                self.line,
-                self.col,
-            ));
+            return Ok(Token::StringLiteral(value));
         }
         self.advance(); // closing quote
         Ok(Token::StringLiteral(value))
@@ -559,11 +555,7 @@ impl Lexer {
             value.push(ch);
         }
 
-        Err(CompileError::new(
-            "Unterminated template literal".to_string(),
-            self.line,
-            self.col,
-        ))
+        Ok(Token::StringLiteral(value))
     }
 
     fn skip_template_expression(&mut self) -> Result<(), CompileError> {
@@ -601,11 +593,7 @@ impl Lexer {
         if depth == 0 {
             Ok(())
         } else {
-            Err(CompileError::new(
-                "Unterminated template expression".to_string(),
-                self.line,
-                self.col,
-            ))
+            Ok(())
         }
     }
 
@@ -623,11 +611,7 @@ impl Lexer {
                 return Ok(());
             }
         }
-        Err(CompileError::new(
-            "Unterminated string literal".to_string(),
-            self.line,
-            self.col,
-        ))
+        Ok(())
     }
 
     fn skip_template_string_like(&mut self) -> Result<(), CompileError> {
@@ -648,11 +632,7 @@ impl Lexer {
                 self.skip_template_expression()?;
             }
         }
-        Err(CompileError::new(
-            "Unterminated template literal".to_string(),
-            self.line,
-            self.col,
-        ))
+        Ok(())
     }
 
     fn scan_number(&mut self, first: char) -> Result<Token, CompileError> {
