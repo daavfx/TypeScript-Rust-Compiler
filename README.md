@@ -3,7 +3,7 @@
 A TypeScript-to-JavaScript compiler written in Rust.
 
 **Author:** Ernesto (daavfx)  
-**Assistance:** AI (Claude/opencode)  
+**Assistance:** AI (mainly chinese free models, deepseek api my GOAT and trae.ai - NOT a single line of code using ZED)  
 **Status:** Compiles 3,145 real-world TypeScript files successfully
 
 ---
